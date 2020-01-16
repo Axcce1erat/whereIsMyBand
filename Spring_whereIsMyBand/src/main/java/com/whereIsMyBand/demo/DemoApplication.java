@@ -27,7 +27,7 @@ public class DemoApplication {
 
 	public static void main(String[] args) throws Exception {
 		SpringApplication.run(DemoApplication.class, args);
-		con=DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "Start+12");
+		con=DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "root");
 	}
 
 	 @Bean
