@@ -14,7 +14,7 @@ html {
    .nav-item,.nav-link > a{
     margin-right: 25px !important;
     margin-left: 25px !important;
-    color: #ffd633 !important;
+    color: #eec10c !important;
    }
 
   
@@ -25,6 +25,14 @@ html {
 /* .navbar-custom { 
     background-color: rgb(238, 28, 39); 
 } */
+
+  .hauptseite{
+    background-color: rgba(177, 175, 175, 0.336);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bolder;
+  }
 
   .abs-center-x {
     position: absolute;
