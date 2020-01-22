@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.28, for Linux (x86_64)
 --
--- Host: localhost    Database: mydb
+-- Host: localhost    Database: band_new
 -- ------------------------------------------------------
 -- Server version	5.7.28-0ubuntu0.18.04.4
 
@@ -16,107 +16,139 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `Bands`
+-- Table structure for table `band`
 --
 
-DROP TABLE IF EXISTS `Bands`;
+DROP TABLE IF EXISTS `band`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Bands` (
-  `idBands` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `band` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(80) NOT NULL,
-  `style` varchar(80) NOT NULL,
   `city` varchar(80) NOT NULL,
-  `skill_level` int(11) NOT NULL,
-  PRIMARY KEY (`idBands`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+  `style_id` int(11) NOT NULL,
+  `skill_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_band_style_idx` (`style_id`),
+  KEY `fk_band_skill1_idx` (`skill_id`),
+  CONSTRAINT `fk_band_skill1` FOREIGN KEY (`skill_id`) REFERENCES `skill` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_band_style` FOREIGN KEY (`style_id`) REFERENCES `style` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Bands`
+-- Dumping data for table `band`
 --
 
-LOCK TABLES `Bands` WRITE;
-/*!40000 ALTER TABLE `Bands` DISABLE KEYS */;
-INSERT INTO `Bands` VALUES (1,'AC/BC','Rock','Sydney',5),(2,'Fettes Broetchen','Sprechgesang','Hamburg',4),(3,'Wu-Tang-Gruppe','Hip Hop','New-York',5),(4,'Guns n\' flowers','Rock/Metal','Boston',5),(5,'Klausis Schabernack Buben','Schlager','Darmstadt',2),(6,'ghjkkl','Techno','Berlin',1),(7,'RedNecks','cCountry','Ohio',3),(8,'Wildecker_Herzdamen','Schlager','Frankfurt',4),(9,'Acca','Pop','Stockholm',5),(10,'Bloodhound_Group','Rock','Las Vegas',4),(11,'Beginner','Hip Hop','Hamburg',4);
-/*!40000 ALTER TABLE `Bands` ENABLE KEYS */;
+LOCK TABLES `band` WRITE;
+/*!40000 ALTER TABLE `band` DISABLE KEYS */;
+INSERT INTO `band` VALUES (1,'Dream-Root','Paderborn',1,2),(2,'Seven Chicks','Munich',2,1),(3,'UguDugu','Seattle',3,5),(4,'Lowlands','Portland',4,3),(5,'Highlands','Bristol',5,4),(6,'Devonshire','Rom',6,2),(7,'Kuno','Magdeburg',7,4),(8,'Klausurtagung','Fuessen',8,5),(9,'Unix-Shellac','Kiel',9,3),(10,'Oefterreich','Basel',10,1),(11,'Killing Cowboys','Hamburg',11,2),(12,'Plastik-Bonbon','Berlin',12,4),(13,'Julo','Bremen',13,3),(14,'Finding Limo','Cologne',5,1),(15,'Seek\'Destroy\'Reboot','Stuttgart',7,4),(16,'TZ-489','Duisburg',2,5),(17,'Dauner-Remains','Ulm',8,2),(18,'Desasterhoch3','Juelich',1,3),(19,'Zollstock','Mannheim',6,4),(20,'ToechterDeinerStadt','Kleve',8,1),(21,'Fettes Brötchen','Cologne',11,2),(22,'Zeichenkette','Verden',7,3),(23,'Wurstbrot','Hamburg',1,3),(24,'Frozen July','Munich',4,1),(25,'Bonobos','Berlin',13,4),(26,'Klingelbeutel','Berlin',2,5),(27,'LachenWeinenTanzen','Hamburg',6,4),(28,'GinGinGin','Stuttgart',3,4),(29,'Kinderkrim','Düsseldorf',13,2),(30,'Gone Gone Gone','Düsseldorf',8,2),(31,'3imWeckla','Nuremberg',7,2),(32,'Early Easter','Cologne',9,3);
+/*!40000 ALTER TABLE `band` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `Instruments`
+-- Table structure for table `instrument`
 --
 
-DROP TABLE IF EXISTS `Instruments`;
+DROP TABLE IF EXISTS `instrument`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Instruments` (
-  `idInstruments` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `instrument` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(80) NOT NULL,
-  PRIMARY KEY (`idInstruments`)
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `instrument`
+--
+
+LOCK TABLES `instrument` WRITE;
+/*!40000 ALTER TABLE `instrument` DISABLE KEYS */;
+INSERT INTO `instrument` VALUES (1,'piano'),(2,'violin'),(3,'bass'),(4,'voice'),(5,'mixer'),(6,'trumpet'),(7,'guitar'),(8,'drums'),(9,'cello'),(10,'viola'),(11,'flugelhorn'),(12,'clarinet'),(13,'flute'),(14,'keyboard'),(15,'oboe'),(16,'saxophon'),(17,'banjo');
+/*!40000 ALTER TABLE `instrument` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `musician`
+--
+
+DROP TABLE IF EXISTS `musician`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `musician` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(80) NOT NULL,
+  `skill_id` int(11) NOT NULL,
+  `style_id` int(11) NOT NULL,
+  `instrument_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_musician_skill1_idx` (`skill_id`),
+  KEY `fk_musician_style1_idx` (`style_id`),
+  KEY `fk_musician_instrument1_idx` (`instrument_id`),
+  CONSTRAINT `fk_musician_instrument1` FOREIGN KEY (`instrument_id`) REFERENCES `instrument` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_musician_skill1` FOREIGN KEY (`skill_id`) REFERENCES `skill` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_musician_style1` FOREIGN KEY (`style_id`) REFERENCES `style` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Instruments`
+-- Dumping data for table `musician`
 --
 
-LOCK TABLES `Instruments` WRITE;
-/*!40000 ALTER TABLE `Instruments` DISABLE KEYS */;
-INSERT INTO `Instruments` VALUES (1,'piano'),(2,'violin'),(3,'bass'),(4,'voice'),(5,'mixer'),(6,'trumpet'),(7,'guitar'),(8,'Drums');
-/*!40000 ALTER TABLE `Instruments` ENABLE KEYS */;
+LOCK TABLES `musician` WRITE;
+/*!40000 ALTER TABLE `musician` DISABLE KEYS */;
+INSERT INTO `musician` VALUES (1,'Malte Knezevic',2,3,7),(2,'Denis Kutlovci',3,5,4),(3,'Stefan Ganze',5,1,11),(4,'Kira Müller',3,3,3),(5,'Iris Nachtigall',2,12,7),(6,'Bert V',2,9,10),(7,'Axl Blck',4,9,15),(8,'cis-a',5,8,8),(9,'AK Boy',5,7,11),(10,'Fritz Potter',1,3,3),(11,'Horst Weasley',2,3,7),(12,'Sabrina K',3,2,4),(13,'Hilda Klein',4,4,4),(14,'Gundula Kluge',3,7,2);
+/*!40000 ALTER TABLE `musician` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `Musician`
+-- Table structure for table `skill`
 --
 
-DROP TABLE IF EXISTS `Musician`;
+DROP TABLE IF EXISTS `skill`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Musician` (
-  `idMusician` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `skill` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `level` varchar(80) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `skill`
+--
+
+LOCK TABLES `skill` WRITE;
+/*!40000 ALTER TABLE `skill` DISABLE KEYS */;
+INSERT INTO `skill` VALUES (1,'Beginner'),(2,'Advanced'),(3,'Professional'),(4,'Expert'),(5,'Luminary');
+/*!40000 ALTER TABLE `skill` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `style`
+--
+
+DROP TABLE IF EXISTS `style`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `style` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(80) NOT NULL,
-  `skill_level` int(11) NOT NULL,
-  PRIMARY KEY (`idMusician`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Musician`
+-- Dumping data for table `style`
 --
 
-LOCK TABLES `Musician` WRITE;
-/*!40000 ALTER TABLE `Musician` DISABLE KEYS */;
-INSERT INTO `Musician` VALUES (1,'Berth',3),(2,'Axel',5),(3,'Malte',2),(4,'Denis',4),(5,'Andreas',1),(6,'Sandra',3),(7,'Johanna',5),(8,'Lars',2),(9,'Clara',3),(10,'Phillipp',4),(11,'Hans',3),(12,'Peter',4),(13,'Susanne',5),(14,'Johann',2),(15,'Luisa',3),(16,'Stefan',4),(17,'Robert',2),(18,'Manuel',1),(19,'Martha',4),(20,'Klaudia',3),(21,'Georg',5);
-/*!40000 ALTER TABLE `Musician` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `Musician_has_Instruments`
---
-
-DROP TABLE IF EXISTS `Musician_has_Instruments`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Musician_has_Instruments` (
-  `Musician_idMusician` int(11) NOT NULL,
-  `Instruments_idInstruments` int(11) NOT NULL,
-  PRIMARY KEY (`Musician_idMusician`,`Instruments_idInstruments`),
-  KEY `fk_Musician_has_Instruments_Instruments1_idx` (`Instruments_idInstruments`),
-  KEY `fk_Musician_has_Instruments_Musician_idx` (`Musician_idMusician`),
-  CONSTRAINT `fk_Musician_has_Instruments_Instruments1` FOREIGN KEY (`Instruments_idInstruments`) REFERENCES `Instruments` (`idInstruments`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Musician_has_Instruments_Musician` FOREIGN KEY (`Musician_idMusician`) REFERENCES `Musician` (`idMusician`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `Musician_has_Instruments`
---
-
-LOCK TABLES `Musician_has_Instruments` WRITE;
-/*!40000 ALTER TABLE `Musician_has_Instruments` DISABLE KEYS */;
-INSERT INTO `Musician_has_Instruments` VALUES (3,1),(10,1),(5,2),(9,2),(11,2),(4,3),(12,3),(2,4),(7,4),(14,4),(20,4),(6,5),(15,5),(19,5),(1,6),(3,6),(8,6),(16,6),(17,7),(18,8);
-/*!40000 ALTER TABLE `Musician_has_Instruments` ENABLE KEYS */;
+LOCK TABLES `style` WRITE;
+/*!40000 ALTER TABLE `style` DISABLE KEYS */;
+INSERT INTO `style` VALUES (1,'Rock'),(2,'Pop'),(3,'Rap'),(4,'Punk'),(5,'Reggae'),(6,'Schlager'),(7,'Metal'),(8,'Jazz'),(9,'Country'),(10,'Hip Hop'),(11,'Alternative'),(12,'Electro'),(13,'Soul'),(14,'Other');
+/*!40000 ALTER TABLE `style` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -128,4 +160,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-01-15 16:37:44
+-- Dump completed on 2020-01-22 11:47:24
