@@ -1,0 +1,176 @@
+body{                                                                              
+  padding-top: 80px;
+
+  
+}                                                                                       /* FORMATIERUNG FÜR DEN BODY, HINTERGRUND */
+
+.navbar {
+  width: 58.2%;                                                                         /* FORMATIERUNG FÜR DEN NAVBAR WIDTH, PASSEND ZUM FOOTER */
+  margin: auto;
+  height: 10.5%;
+}
+
+
+.navbar-nav li a{                                                                       /* FORMATIERUNG FÜR DIE FONT IM NAVBAR */
+  color: white !important;
+  font-weight: bold;
+  font-family: Arial;
+  font-size: 20px;
+}
+
+
+.galleryImgMain{                                                                        /* FORTMATIERUNG FÜR HEADER IMG & ABOUT US IMG */                              
+  height:16em;
+  width:100%;
+  object-fit: cover;
+  object-position:center;
+}
+
+
+.card h4{                                                                               /* FORMATIERUNG FÜR ALLE H4, DASS DER FONT WEIẞ IST */
+  color:white;
+  font-family: Arial;
+  font-size: 20px;
+}
+
+
+.card-body button {                                                                     /* FORMATIERUNG FÜR DEN BUTTON IN CONTACT FORM, HOVER EFFEKT ETC */
+  background-color:#0db2db;
+  border-radius:42px;
+  display:inline-block;
+  cursor:pointer;
+  color:#ffffff;
+  font-family:Arial;
+  font-weight: bold;
+  font-size:17px;
+  padding: 9px 15px;
+  text-decoration:none;
+  text-shadow:0px 1px 0px #2f6627;
+  margin-left: 45%;
+  
+
+}
+.card button:hover {
+  background-color:#99d678;
+}
+.card button:active {
+  position:relative;
+  top:1px;
+}
+
+
+  
+.s-p {                                                                                  /* FORMATIERUNG FÜR DEN SOCIAL MEDIA ICONS */
+  font-size: 1.5em; color: #c8232c; margin-right: 15px; transition: .2s linear;
+}
+.s-p:hover {                                                                            /* FORMATIERUNG FÜR DEN HOVER EFFECT */
+  font-size: 1.5em; color: #555555; margin-right: 15px; transition: .2s linear;
+}
+
+.s-f {                                                                                  /* FORMATIERUNG FÜR DEN SOCIAL MEDIA ICONS */
+  font-size: 1.5em; color: #3b5998; margin-right: 15px; transition: .2s linear;
+}
+.s-f:hover {                                                                            /* FORMATIERUNG FÜR DEN HOVER EFFECT */
+  font-size: 1.5em; color: #555555; margin-right: 15px; transition: .2s linear;
+}
+  
+.s-t {                                                                                  /* FORMATIERUNG FÜR DEN SOCIAL MEDIA ICONS */                                                                             
+  font-size: 1.5em; color: #00BFFF; margin-right: 15px; transition: .2s linear;
+}
+.s-t:hover {                                                                            /* FORMATIERUNG FÜR DEN HOVER EFFECT */                                                                 
+  font-size: 1.5em; color: #555555; margin-right: 15px; transition: .2s linear;
+}
+
+.s-s {                                                                                  /* FORMATIERUNG FÜR DEN SOCIAL MEDIA ICONS */
+  font-size: 1.5em; color: #FFFC00; margin-right: 15px; transition: .2s linear;
+}
+.s-s:hover {                                                                            /* FORMATIERUNG FÜR DEN HOVER EFFECT */
+  font-size: 1.5em; color: #555555; margin-right: 15px; transition: .2s linear;
+}
+
+.s-l {                                                                                  /* FORMATIERUNG FÜR DEN SOCIAL MEDIA ICONS */
+  font-size: 1.5em; color: #2867b2; margin-right: 15px; transition: .2s linear;
+}
+.s-l:hover {                                                                            /* FORMATIERUNG FÜR DEN HOVER EFFECT */
+  font-size: 1.5em; color: #555555; margin-right: 15px; transition: .2s linear;
+}
+
+.s-g {                                                                                  /* FORMATIERUNG FÜR DEN SOCIAL MEDIA ICONS */
+  font-size: 1.5em; color: #CC3333; margin-right: 15px; transition: .2s linear;
+}
+.s-g:hover {                                                                            /* FORMATIERUNG FÜR DEN HOVER EFFECT */
+  font-size: 1.5em; color: #555555; margin-right: 15px; transition: .2s linear;
+}
+
+
+
+.contact-form{                                                                          /* FORMATIERUNG FÜR DEN CONTACT US FORM */
+    background: #fff;
+    margin-top: 5%;
+    margin-bottom: 2%;
+    width: 100%;
+}
+.contact-form .form-control{                                                            /* FORMATIRUNG FÜR "YOUR MESSAGE" BOX DAS ES LEICHT RUND */                                                     
+    border-radius:1rem;
+}
+.contact-image{                                                                         /* FORMATIERUNG FÜR DEN CLASS CONTACT-IMAGE */
+    text-align: center;
+}
+.contact-image img{                                                                     /* FORMATIERUNG NUR FÜR DEN CONTACT IMAGE IM CLASS */
+    border-radius: rem;
+    width: 15%;
+    margin-top: -3%;
+    transform: rotate(10deg);
+
+    
+}
+.contact-form form{                                                                     /* FORMATIERUNG FÜR DEN PADDING AN "CONTACT US" FORM */
+    padding: 9%;
+}
+.contact-form form .row{                                                                /* FORMATIERUNG FÜR DEN ROW IN DEN "CONTAC US" FORM */
+    margin-bottom: -11%;
+    margin-top: -9%;
+}
+
+.contact-form .btnContact {                                                             /* FORMATIERUNG FÜR DEN BUTTON IN CONTACT FORM, HOVER EFFEKT ETC */
+    width: 32%;
+    border: none;
+    border-radius: 42px;
+    padding: 9px 10px;
+    background: #0db2db;
+    font-weight: bold;
+    color: #ffffff;
+    cursor: pointer;
+    display:inline-block;
+    font-family:Arial;
+    font-size:17px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #2f6627;
+}
+.btnContactSubmit
+{
+    width: 32%;
+    border-radius: 42px;
+    padding: 9px 10px;
+    color: #ffffff;
+    background-color: #0db2db;
+    border: none;
+    cursor: pointer;
+    display:inline-block;
+    font-family:Arial;
+    font-size:17px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #2f6627;
+}
+
+.contact-form .btnContact:hover {
+  background-color:#99d678;
+}
+.contact-form .btnContact:active {
+  position:relative;
+  top:1px;
+}
+
+
+ 
+
