@@ -1,4 +1,4 @@
-package com.whereIsMyBand.demo;
+package com.whereIsMyBand.ourProject;
 
 import org.apache.catalina.connector.Connector;
 import org.apache.tomcat.util.descriptor.web.SecurityCollection;
@@ -17,17 +17,15 @@ import org.springframework.web.server.ResponseStatusException;
 import org.springframework.http.HttpStatus;
 import java.sql.*;
 
+
 import org.springframework.context.annotation.Bean;
 
 @Controller
 @SpringBootApplication
-public class DemoApplication {
+public class OurProjectApplication {
 
-	static Connection con;
-
-	public static void main(String[] args) throws Exception {
-		SpringApplication.run(DemoApplication.class, args);
-		con=DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "root");
+	public static void main(String[] args) throws Exception{
+		SpringApplication.run(OurProjectApplication.class, args);
 	}
 
 	 @Bean
