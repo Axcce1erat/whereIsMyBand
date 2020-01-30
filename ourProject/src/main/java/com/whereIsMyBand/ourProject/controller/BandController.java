@@ -74,23 +74,27 @@ public class BandController {
 	@PostMapping("/band")
 	public String postRegister(@RequestParam(required = false) Long idRole, @RequestParam(required=false) Long idBand) {
 
+		Band band = new Band();
+
 		System.out.println("Hallo, wie geht es dir?");
 		if (idBand != null){
 			Optional<Band> optionalBand = bandRepository.findById(idBand);
 			if (optionalBand.isPresent()) {
-				Band band = optionalBand.get();
+				 band = optionalBand.get();
 
 				if (idRole != null){
 					Optional<Role> optionalRole = roleRepository.findById(idRole);
 					if (optionalRole.isPresent()) {
 						Role role = optionalRole.get();
 
-
+					System.out.println("Komme ich hier hin?");
 						bandRepository.save(band);
 					}
 				}
 			}
-		}	
+		}
+
+		bandRepository.save(band);	
 
 		return "redirect:/band?idBand=" + idBand;
 	}
