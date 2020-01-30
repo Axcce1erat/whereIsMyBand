@@ -47,102 +47,138 @@ public class BandController {
 	}
 
 	@GetMapping("/band")
-	public String getBand(Model model,
-			@RequestParam(required = false) Long id) {
+	public String getBand(Model model, @RequestParam(required = false) Long id) {
 
-			Band band = new Band();
-			if (id != null) {
-				Optional<Band> optionalBand = bandRepository.findById(id);
-				if (optionalBand.isPresent()) {
-					band = optionalBand.get();
-				}
+		Band band = new Band();
+		if (id != null) {
+			Optional<Band> optionalBand = bandRepository.findById(id);
+			if (optionalBand.isPresent()) {
+				band = optionalBand.get();
 			}
+		}
 
-			//Hier beginnt der Versuch des calls der Roles
-			model.addAttribute("band", band);
-			model.addAttribute("allRoles", roleRepository.findAll());
-			model.addAttribute("allStyles", styleRepository.findAll());
-			model.addAttribute("allSkills", skillRepository.findAll());
+		//Hier beginnt der Versuch des calls der Roles
+		model.addAttribute("band", band);
+		model.addAttribute("allRoles", roleRepository.findAll());
+		model.addAttribute("allStyles", styleRepository.findAll());
+		model.addAttribute("allSkills", skillRepository.findAll());
 
-			// call the method getRoles in Band
+		// call the method getRoles in Band
 
-			List<Role> roles = new ArrayList<>();
-			Method methodRole = getMethod(band, "getRoles",
-					new Class[]{});
-			if (methodRole != null) {
-				try {
-					roles = (List<Role>) methodRole.invoke(band);
-				} catch (IllegalAccessException | InvocationTargetException e) {
-					e.printStackTrace();
-				}
+		List<Role> roles = new ArrayList<>();
+		Method methodRole = getMethod(band, "getRoles",
+				new Class[]{});
+		if (methodRole != null) {
+			try {
+				roles = (List<Role>) methodRole.invoke(band);
+			} catch (IllegalAccessException | InvocationTargetException e) {
+				e.printStackTrace();
 			}
+		}
 
-			model.addAttribute("bandRoles", roles);
+		model.addAttribute("bandRoles", roles);
 
 
-			//call the method getStyles in Band
+		//call the method getStyles in Band
 
-			List<Style> styles = new ArrayList<>();
-			Method methodStyle = getMethod(band, "getStyles",
-					new Class[]{});
-			if (methodStyle != null) {
-				try {
-					styles = (List<Style>) methodStyle.invoke(band);
-				} catch (IllegalAccessException | InvocationTargetException e) {
-					e.printStackTrace();
-				}
+		List<Style> styles = new ArrayList<>();
+		Method methodStyle = getMethod(band, "getStyles",
+				new Class[]{});
+		if (methodStyle != null) {
+			try {
+				styles = (List<Style>) methodStyle.invoke(band);
+			} catch (IllegalAccessException | InvocationTargetException e) {
+				e.printStackTrace();
 			}
+		}
 
-			model.addAttribute("bandStyles", roles);
+		model.addAttribute("bandStyles", roles);
 
 
-			//call the method getSkills in Band
+		//call the method getSkills in Band
 
-			List<Skill> skills = new ArrayList<>();
-			Method methodSkill = getMethod(band, "getSkills",
-					new Class[]{});
-			if (methodSkill != null) {
-				try {
-					skills = (List<Skill>) methodSkill.invoke(band);
-				} catch (IllegalAccessException | InvocationTargetException e) {
-					e.printStackTrace();
-				}
+		List<Skill> skills = new ArrayList<>();
+		Method methodSkill = getMethod(band, "getSkills",
+				new Class[]{});
+		if (methodSkill != null) {
+			try {
+				skills = (List<Skill>) methodSkill.invoke(band);
+			} catch (IllegalAccessException | InvocationTargetException e) {
+				e.printStackTrace();
 			}
+		}
 
-			model.addAttribute("bandSkills", skills);
+		model.addAttribute("bandSkills", skills);
 
 
-			return "band";
-}
-
-@PostMapping("/band")
-public String postSchool(@ModelAttribute Band band) {
-
-	bandRepository.save(band);
-
-	return "redirect:/bands";
-}
-
-@GetMapping("/band/delete")
-public String deleteBand(@RequestParam Long id) {
-
-	bandRepository.deleteById(id);
-
-	return "redirect:/bands";
-}
-
-//Hier ist die getMethod
-
-public Method getMethod(Object obj, String methodName, Class[] args) {
-	Method method;
-	try {
-		method = obj.getClass().getDeclaredMethod(methodName, args);
-		return method;
-	} catch (NoSuchMethodException e) {
-		e.printStackTrace();
+		return "band";
 	}
-	return null;
-}
+
+	/*@PostMapping("/band")
+	  public String postSchool(@ModelAttribute Band band) {
+
+	  bandRepository.save(band);
+
+	  return "redirect:/bands";
+	  }  */
+
+
+
+
+	@PostMapping("/band")
+	public String postRegister(@RequestParam Long idBand, @RequestParam Long idRole) {
+
+		Optional<Role> optionalRole = RoleRepository.findById(idRole);
+		if (optionalRole.isPresent()) {
+			Role role = optionalRole.get();
+
+			Optional<Band> optionalBand = bandRepository.findById(idBand);
+			if (optionalBand.isPresent()) {
+				Band band = optionalBand.get();
+
+
+				// call the method setBand in Wizard
+				Method method = getMethod(wizard, "setSchool",
+						new Class[]{School.class});
+				if (method != null) {
+					try {
+						method.invoke(wizard, school);
+					} catch (IllegalAccessException | InvocationTargetException e) {
+						e.printStackTrace();
+					}
+				}
+				wizardRepository.save(wizard);
+			}
+		}
+
+		return "redirect:/school/register?idSchool=" + idSchool;
+	}
+
+
+
+
+
+
+	@GetMapping("/band/delete")
+	public String deleteBand(@RequestParam Long id) {
+
+		bandRepository.deleteById(id);
+
+		return "redirect:/bands";
+	}
+
+	//Hier ist die getMethod
+
+	public Method getMethod(Object obj, String methodName, Class[] args) {
+		Method method;
+		try {
+			method = obj.getClass().getDeclaredMethod(methodName, args);
+			return method;
+		} catch (NoSuchMethodException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 }
 
