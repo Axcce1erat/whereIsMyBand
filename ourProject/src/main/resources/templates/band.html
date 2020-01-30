@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Band</title>
+	</head>
+	<body>
+		<h3 th:text="${band.id} ? 'Edit Band' : 'Create Band'">Band</h3>
+		<form method="post" th:action="@{/band}" th:object="${band}">
+			<input name="id" th:field="*{id}" type="hidden">
+			<label for="band-bandName">BandName:</label>
+			<input id="band-bandName" name="bandName" placeholder="AC/DC" required th:field="*{bandName}" type="text">
+			<br><br>
+			<label for="band-city">City:</label>
+			<input id="band-city" name="city" placeholder="Darmstadt" required th:field="*{city}" type="text">
+		</form>
+		<br><br>
+		<form action="/band" method="post">
+			<input name="idrole" th:value"${role.id}" type="hidden">
+			<label for="role">Select a role:</label>
+			<select id="role" name="idRole">
+				<option th:each="role : ${allRoles}" th:text="${role.roleName}"
+
+		     th:value="${role.id}">role name
+				</option>
+			</select>
+			<br><br>
+
+			<form action="/band" method="post">
+				<input name="idstyle" th:value"${style.id}" type="hidden">
+				<label for="style">Select a style:</label>
+				<select id="style" name="idStyle">
+					<option th:each="style : ${allStyles}" th:text="${style.StyleName}"
+
+		       th:value="${style.id}">style name
+					</option>
+				</select>
+				<br><br>
+
+				<form action="/band" method="post">
+					<input name="idskill" th:value"${skill.id}" type="hidden">
+					<label for="skill">Select a skill:</label>
+					<select id="skill" name="idSkill">
+						<option th:each="skill : ${allSkills}" th:text="${skill.level}"
+
+			th:value="${skill.id}">skill level
+						</option>
+					</select>
+					<br><br>
+					<br><br>
+					<input type="submit" value="Send">
+				</form>
+				<br>
+				<a href="/bands">Return to the list</a>
+	</body>
+</html>
+~       
