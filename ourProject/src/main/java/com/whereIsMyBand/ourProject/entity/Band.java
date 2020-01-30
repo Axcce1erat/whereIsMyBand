@@ -32,8 +32,6 @@ public class Band {
 
 
 
-
-
 	public Band() {
 	}
 
@@ -50,7 +48,7 @@ public class Band {
 		return id;
 	}
 
-	public void setId(Long id){
+	public void setId(Long idBand){
 		this.id=id;
 	}
 
@@ -93,7 +91,4 @@ public class Band {
         public void setRole(Role role){
                 this.role=role;
         }
-
 }
-
-

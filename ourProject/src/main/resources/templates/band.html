@@ -16,7 +16,7 @@
 		</form>
 		<br><br>
 		<form action="/band" method="post">
-			<input name="idrole" th:value"${role.id}" type="hidden">
+			<input name="idBand" th:value"${band.id}" type="hidden">
 			<label for="role">Select a role:</label>
 			<select id="role" name="idRole">
 				<option th:each="role : ${allRoles}" th:text="${role.roleName}"
@@ -27,7 +27,7 @@
 			<br><br>
 
 			<form action="/band" method="post">
-				<input name="idstyle" th:value"${style.id}" type="hidden">
+				<input name="idBand" th:value"${band.id}" type="hidden">
 				<label for="style">Select a style:</label>
 				<select id="style" name="idStyle">
 					<option th:each="style : ${allStyles}" th:text="${style.StyleName}"
@@ -38,7 +38,7 @@
 				<br><br>
 
 				<form action="/band" method="post">
-					<input name="idskill" th:value"${skill.id}" type="hidden">
+					<input name="idBand" th:value"${band.id}" type="hidden">
 					<label for="skill">Select a skill:</label>
 					<select id="skill" name="idSkill">
 						<option th:each="skill : ${allSkills}" th:text="${skill.level}"
