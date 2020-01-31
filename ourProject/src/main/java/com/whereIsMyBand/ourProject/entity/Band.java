@@ -32,8 +32,6 @@ public class Band {
 
 
 
-
-
 	public Band() {
 	}
 
@@ -93,7 +91,4 @@ public class Band {
         public void setRole(Role role){
                 this.role=role;
         }
-
 }
-
-

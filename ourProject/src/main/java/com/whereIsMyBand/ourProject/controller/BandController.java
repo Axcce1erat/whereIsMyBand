@@ -26,8 +26,8 @@ import java.util.List;
 @Controller
 public class BandController {
 
-        @Autowired
-        private BandRepository bandRepository;
+	@Autowired
+	private BandRepository bandRepository;
 
 	@Autowired
 	private SkillRepository skillRepository;
@@ -35,48 +35,48 @@ public class BandController {
 	@Autowired
 	private StyleRepository styleRepository;
 
-	 @Autowired
-        private RoleRepository roleRepository;
+	@Autowired
+	private RoleRepository roleRepository;
 
-    @GetMapping("/bands")
-    public String getAll(Model model) {
+	@GetMapping("/bands")
+	public String getAll(Model model) {
 
-            model.addAttribute("bands", bandRepository.findAll());
+		model.addAttribute("bands", bandRepository.findAll());
 
-        return "bands";
-    }
+		return "bands";
+	}
 
-    @GetMapping("/band")
-    public String getBand(Model model,
-                            @RequestParam(required = false) Long id) {
+	@GetMapping("/band")
+	public String getBand(Model model) {
 
-                            Band band = new Band();
-        if (id != null) {
-            Optional<Band> optionalBand = bandRepository.findById(id);
-            if (optionalBand.isPresent()) {
-                band = optionalBand.get();
-            }
-        }
-        model.addAttribute("band", band);
+		Band band = new Band();
+
+		model.addAttribute("band", band);
+		model.addAttribute("allRoles", roleRepository.findAll());
+		model.addAttribute("allStyles", styleRepository.findAll());
+		model.addAttribute("allSkills", skillRepository.findAll());
 
 
-        return "band";
-    }
+		return "band";
+	}
 
-    @PostMapping("/band")
-    public String postSchool(@ModelAttribute Band band) {
+	@PostMapping("/band")
+	public String postBand(Model model, @ModelAttribute Band band, @ModelAttribute Role role, @ModelAttribute Style style, @ModelAttribute Skill skill) {
 
-            bandRepository.save(band);
+		bandRepository.save(band);
+		roleRepository.save(role);
+		styleRepository.save(style);
+		skillRepository.save(skill);	
 
-        return "redirect:/bands";
-    }
+		return "redirect:/bands";
+	}
 
-    @GetMapping("/band/delete")
-    public String deleteBand(@RequestParam Long id) {
+	@GetMapping("/band/delete")
+	public String deleteBand(@RequestParam Long id) {
 
-            bandRepository.deleteById(id);
+		bandRepository.deleteById(id);
 
-        return "redirect:/bands";
-    }
+		return "redirect:/bands";
+	}
+
 }
-
