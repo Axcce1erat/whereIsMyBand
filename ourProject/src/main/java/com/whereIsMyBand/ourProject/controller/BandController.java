@@ -63,11 +63,8 @@ public class BandController {
 	@PostMapping("/band")
 	public String postBand(Model model, @ModelAttribute Band band, @ModelAttribute Role role, @ModelAttribute Style style, @ModelAttribute Skill skill) {
 
-		System.out.println("Ich bin am Anfang der postBand Methode");
 		bandRepository.save(band);
-		System.out.println("Ich bin nach der save(band)");
 		roleRepository.save(role);
-		System.out.println("Ich bin nach der save(role)");
 		styleRepository.save(style);
 		skillRepository.save(skill);	
 

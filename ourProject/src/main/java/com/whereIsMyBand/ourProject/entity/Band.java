@@ -48,7 +48,7 @@ public class Band {
 		return id;
 	}
 
-	public void setId(Long idBand){
+	public void setId(Long id){
 		this.id=id;
 	}
 
