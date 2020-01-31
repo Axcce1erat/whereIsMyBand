@@ -47,20 +47,9 @@ public class BandController {
 	}
 
 	@GetMapping("/band")
-	public String getBand(Model model, @RequestParam(required = false) Long id) {
+	public String getBand(Model model) {
 
 		Band band = new Band();
-		/*Style style = new Style();
-		  Role role = new Role();
-		  Skill skill = new Skill(); */
-
-		if (id != null) {
-			Optional<Band> optionalBand = bandRepository.findById(id);
-			if (optionalBand.isPresent()) {
-				band = optionalBand.get();
-			}
-		}
-
 
 		model.addAttribute("band", band);
 		model.addAttribute("allRoles", roleRepository.findAll());
@@ -72,31 +61,17 @@ public class BandController {
 	}
 
 	@PostMapping("/band")
-	public String postRegister(@RequestParam(required = false) Long idRole, @RequestParam(required=false) Long idBand) {
+	public String postBand(Model model, @ModelAttribute Band band, @ModelAttribute Role role, @ModelAttribute Style style, @ModelAttribute Skill skill) {
 
-		Band band = new Band();
+		System.out.println("Ich bin am Anfang der postBand Methode");
+		bandRepository.save(band);
+		System.out.println("Ich bin nach der save(band)");
+		roleRepository.save(role);
+		System.out.println("Ich bin nach der save(role)");
+		styleRepository.save(style);
+		skillRepository.save(skill);	
 
-		System.out.println("Hallo, wie geht es dir?");
-		if (idBand != null){
-			Optional<Band> optionalBand = bandRepository.findById(idBand);
-			if (optionalBand.isPresent()) {
-				 band = optionalBand.get();
-
-				if (idRole != null){
-					Optional<Role> optionalRole = roleRepository.findById(idRole);
-					if (optionalRole.isPresent()) {
-						Role role = optionalRole.get();
-
-					System.out.println("Komme ich hier hin?");
-						bandRepository.save(band);
-					}
-				}
-			}
-		}
-
-		bandRepository.save(band);	
-
-		return "redirect:/band?idBand=" + idBand;
+		return "redirect:/bands";
 	}
 
 	@GetMapping("/band/delete")
@@ -107,18 +82,4 @@ public class BandController {
 		return "redirect:/bands";
 	}
 
-	//Hier ist die getMethod
-
-	public Method getMethod(Object obj, String methodName, Class[] args) {
-		Method method;
-		try {
-			method = obj.getClass().getDeclaredMethod(methodName, args);
-			return method;
-		} catch (NoSuchMethodException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
 }
-
