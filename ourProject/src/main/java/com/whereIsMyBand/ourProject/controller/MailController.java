@@ -18,47 +18,32 @@ import org.springframework.web.bind.annotation.RequestParam;
 		@Autowired
 		private MailRepository mailRepository;
 	    
-		// TODO : get all mails
+		
 		@GetMapping("/mails")
 	    public String getAll(Model model) {
-
-		  model.addAttribute("mails", mailRepository.findAll());
+		
 		        return "mails";
 		    }
 		
 		@PostMapping("/mails")
-	    public String postMail(Model model,@ModelAttribute Mail mail) {
-		
+	    public String postMail(Model model, @ModelAttribute Mail mail) {
 			mailRepository.save(mail);
-			model.addAttribute("mails", mailRepository.findAll());    
 						
 	        return "mails";
 	    }
 		
-	  /*  @GetMapping("/bands")
-	    public String getAll(Model model) {
-
-	       model.addAttribute("bands", bandRepository.findAll());
-
-	        return "bands";
-	    }*/
-		
-		
+		//TODO : get all mails
+		@GetMapping("/mailoutput")
+	    public String postMailoutput(Model model,@ModelAttribute Mail mail) {
+			model.addAttribute("mailoutput", mailRepository.findAll());    
+					
+	    return "mailoutput";
+	    }
 		
 		@GetMapping ("/")
 		public String getMail(Model model) {
 			return "index";
 		}
-		
-
-				
-	/*	@PostMapping("/")
-	    public String postMail(Model model,@ModelAttribute Mail mail) {
-
-	            mailRepository.save(mail);
-
-	        return "mails";
-	    }*/
 	    
 	}
 
