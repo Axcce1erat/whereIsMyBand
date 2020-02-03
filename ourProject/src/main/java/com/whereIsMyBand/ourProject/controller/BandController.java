@@ -42,9 +42,21 @@ public class BandController {
 	public String getAll(Model model) {
 
 		model.addAttribute("bands", bandRepository.findAll());
+		model.addAttribute("allRoles", roleRepository.findAll());
+		model.addAttribute("allStyles", styleRepository.findAll());
+		model.addAttribute("allSkills", skillRepository.findAll());
 
 		return "bands";
 	}
+
+
+/*	@PostMapping("/bands")
+	public String searchBand(Model model) {
+
+		model.addAttribute("allRoles", roleRepository.findAll());
+                        return "bands";
+
+	} */
 
 	@GetMapping("/band")
 	public String getBand(Model model) {
