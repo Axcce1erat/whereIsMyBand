@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"> <meta charset="UTF-8">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"> 
+<meta charset="UTF-8">
   <title>Mail-Antwortseite</title>
 <head>
 
@@ -16,11 +16,10 @@
       Vielen Dank für ihre Nachricht. Wir melden uns umgehend bei Ihnen!
     </p>  
        </section>
-  <footer>
-          <ul>
-        <li>[<a href=https://www.codecademy.com/>About us</a>] - [<a href=https://www.sololearn.com/>Fellows</a>] </li>
-      </li>
-      </ul>
-      </footer>
+
+<!--Footer -->
+
+ <div th:replace="fragments/footer :: bottom"></div>
+
 </body>
 
