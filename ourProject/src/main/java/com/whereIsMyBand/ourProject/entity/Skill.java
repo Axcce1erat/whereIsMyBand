@@ -9,6 +9,7 @@ import java.sql.Date;
 import javax.persistence.*;
 
 
+
 @Entity
 public class Skill {
 

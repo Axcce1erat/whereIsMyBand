@@ -6,7 +6,7 @@
 	</head>
 	<body>
 		<h3 th:text="'Create Band'">Band</h3>
-		<form method="post" th:action"@{/band}" th:object="${band}">
+		<form method="post" th:action="@{/band}" th:object="${band}">
 			<!-- <input name="id" th:field="*{id}" type="hidden"> -->
 			<label for="band-bandName">BandName:</label>
 			<input id="band-bandName" name="bandName" placeholder="AC/DC" required th:field="*{bandName}" type="text">
@@ -24,7 +24,7 @@
 			<br><br>
 			<label for="style">Select a style:</label>
 			<select id="style" name="style">
-				<option th:each="style : ${allStyles}" th:text="${style.StyleName}"
+				<option th:each="style : ${allStyles}" th:text="${style.styleName}"
 		      th:value="${style.id}">style name
 				</option>
 			</select>
