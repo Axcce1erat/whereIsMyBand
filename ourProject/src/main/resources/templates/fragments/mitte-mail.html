@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+   <title>Navbar-Fragment</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+</head>
+<body>
+     <!--Bild unter Navigation-->
+     <div th:fragment="mitte-mail"> 
+     <div id="mainPicture">
+      <img class="galleryImgMain" src="pictures/Team/hiclipart.com(1).png" style="height:20em;width:100%; border-radius:5px" alt="Picture Of Music Notes">
+   </div>
+   <div id="TopTop">
+   <div class="mb-4">&nbsp;</div>
+   <div class="row d-flex justify-content-center">
+   <div class="col-md-12 mb-4">
+   <div class="card">
+      <h4 class="card-header bg-dark info-color white-text text-center py-4"><strong>Feedback</strong></h4>
+      <br>
+      <div class="card-body">
+         <p class="card-text">Vielen Dank für ihre Mail! Die Sichtung der zahlreichen Mails wird einige Zeit in Anspruch nehmen. Wir melden uns aber so rasch wie möglich bei Ihnen.</p>
+         <button type="button" onclick="window.location.href = '/';" class="btn btn-primary">Back to home</button>
+      </div>
+   </div>
+  </div>
+</body>
+</html>
