@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import java.util.Optional;
+import org.springframework.data.domain.Example;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -50,13 +51,23 @@ public class BandController {
 	}
 
 
-/*	@PostMapping("/bands")
-	public String searchBand(Model model) {
+	@PostMapping("/bands")
+	public String searchBand(Model model, @ModelAttribute Role role, @ModelAttribute Style style, @ModelAttribute Skill skill) {
+	
+	 	Band band = new Band();
+		band.setStyle(style);
+		band.setRole(role);
+		band.setSkill(skill);
+
+		model.addAttribute("bands", bandRepository.findAll(Example.of(band)));
 
 		model.addAttribute("allRoles", roleRepository.findAll());
-                        return "bands";
+                model.addAttribute("allStyles", styleRepository.findAll());
+                model.addAttribute("allSkills", skillRepository.findAll());
 
-	} */
+                return "bands";
+
+	} 
 
 	@GetMapping("/band")
 	public String getBand(Model model) {

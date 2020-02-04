@@ -8,7 +8,6 @@ import javax.persistence.Id;
 import java.sql.Date;
 import javax.persistence.*;
 
-
 @Entity
 public class Style {
 
