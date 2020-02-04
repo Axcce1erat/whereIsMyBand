@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+   <title>Navbar-Fragment</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+</head>
+<body>
+     <!--Bild unter Navigation-->
+     <div th:fragment="mitte"> 
+     <div id="mainPicture">
+      <img class="galleryImgMain" src="pictures/Team/hiclipart.com(1).png" style="height:20em;width:100%; border-radius:5px" alt="Picture Of Music Notes">
+   </div>
+   <div id="TopTop">
+   <div class="mb-4">&nbsp;</div>
+   <div class="row d-flex justify-content-center">
+   <div class="col-md-12 mb-4">
+   <div class="card">
+      <h4 class="card-header bg-dark info-color white-text text-center py-4"><strong>Find A Band</strong></h4>
+      <br>
+      <div class="card-body">
+         <p class="card-text">Do you have the talent and passion to play for a band, but were never able to find one? Well, welcome to the new world of musicians. Here you can search and apply for the band that best suits your talent, genre & experience. From rock to hip hop, beginner or high experienced, there is something in store for everyone. There is nothing to loose and deffinitly worth trying. To get started, click the button below to search for your pefect band.</p>
+         <button type="button" onclick="window.location.href = 'bands';" class="btn btn-primary">Get Started</button>
+      </div>
+   </div>
+  </div>
+</body>
+</html>
