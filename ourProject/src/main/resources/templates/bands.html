@@ -49,9 +49,9 @@
 						<form method="post" th:action="@{/bands}" th:object="${bands}">
 							<label for="role">Select a role:</label>
 							<select id="role" name="role">
-								<option value=" ">----Select----</option>
+									<option value=" ">----Select----</option>
 								<option th:each="role : ${allRoles}" th:text="${role.roleName}"
-			 th:value="${role.id}">
+		th:value="${role.id}">
 								</option>
 							</select>
 							<br><br>
@@ -59,7 +59,7 @@
 							<select id="style" name="style">
 								<option value=" ">----Select----</option>
 								<option th:each="style : ${allStyles}" th:text="${style.styleName}"
-			  th:value="${style.id}">
+		th:value="${style.id}">
 								</option>
 							</select>
 							<br><br>
@@ -68,7 +68,7 @@
 							<select id="skill" name="skill">
 								<option value=" ">----Select----</option>
 								<option th:each="skill : ${allSkills}" th:text="${skill.level}"
-			  th:value="${skill.id}">skill level
+		th:value="${skill.id}">skill level
 								</option>
 							</select>
 							<br><br>
@@ -100,6 +100,46 @@
 									</tr>
 								</tbody>
 							</table>
+
+
+
+							<!-- Here starts bands pagination -->
+
+
+							<nav aria-label="Pagination" th:if="${bands.totalPages gt 0}">
+								<ul class="pagination justify-content-center font-weight-medium">
+									<li class="page-item" th:classappend="${bands.number eq 0} ? 'disabled'">
+										<a class="page-link svg-icon"
+	     th:href="@{/bands?page={id}(id=${bands.number lt 2 ? 1 : bands.number})}"
+	     aria-label="Previous"
+      title="Previous Page" rel="tooltip">
+											<span aria-hidden="true" data-feather="chevrons-left" width="20" height="20"></span>
+										</a>
+									</li>
+									<li class="page-item" th:classappend="${i eq bands.number + 1} ? 'active'"
+	     th:each="i : ${#numbers.sequence( bands.number + 1, bands.totalPages > 10 + bands.number ? bands.number + 10 : bands.totalPages, 1)}">
+										<a class="page-link" th:href="@{/bands?page={id}(id=${i})}" th:text="${i}"
+	     th:title="${'Page '+ i}"
+	     rel="tooltip"></a>
+									</li>
+									<li class="page-item disabled" th:if="${bands.number + 10 < bands.totalPages}">
+										<a class="page-link svg-icon" href="#">
+											<span data-feather="more-horizontal" width="20" height="20"></span>
+										</a>
+									</li>
+									<li class="page-item" th:classappend="${bands.number + 1 eq bands.totalPages} ? 'disabled'">
+										<a class="page-link svg-icon" th:href="@{/bands?page={id}(id=${bands.number + 2})}"
+	     aria-label="Next"
+      title="Next Page" rel="tooltip">
+											<span aria-hidden="true" data-feather="chevrons-right" width="20" height="20"></span>
+										</a>
+									</li>
+								</ul>
+							</nav>
+
+
+
+
 						</div>
 					</div>
 					<!--Footer -->

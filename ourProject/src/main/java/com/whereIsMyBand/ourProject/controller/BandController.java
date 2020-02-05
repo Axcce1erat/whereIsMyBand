@@ -17,12 +17,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import java.util.Optional;
 import org.springframework.data.domain.Example;
+import javax.servlet.http.HttpServletRequest;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Collections;
 
 @Controller
 public class BandController {
@@ -40,9 +43,21 @@ public class BandController {
 	private RoleRepository roleRepository;
 
 	@GetMapping("/bands")
-	public String getAll(Model model) {
+	public String getAll (HttpServletRequest request, Model model) {
 
-		model.addAttribute("bands", bandRepository.findAll());
+		int page = 0;
+		int size = 10;
+
+		if (request.getParameter("page") != null && !request.getParameter("page").isEmpty()) {
+			page = Integer.parseInt(request.getParameter("page")) - 1;
+		}
+
+		if (request.getParameter("size") != null && !request.getParameter("size").isEmpty()) {
+			size = Integer.parseInt(request.getParameter("size"));
+		}
+
+
+		model.addAttribute("bands", bandRepository.findAll(PageRequest.of(page, size)));
 		model.addAttribute("allRoles", roleRepository.findAll());
 		model.addAttribute("allStyles", styleRepository.findAll());
 		model.addAttribute("allSkills", skillRepository.findAll());
@@ -52,20 +67,30 @@ public class BandController {
 
 
 	@PostMapping("/bands")
-	public String searchBand(Model model, @ModelAttribute Role role, @ModelAttribute Style style, @ModelAttribute Skill skill) {
-	
-	 	Band band = new Band();
+	public String searchBand(HttpServletRequest request, Model model, @ModelAttribute Role role, @ModelAttribute Style style, @ModelAttribute Skill skill) {
+
+		Band band = new Band();
 		band.setStyle(style);
 		band.setRole(role);
 		band.setSkill(skill);
 
-		model.addAttribute("bands", bandRepository.findAll(Example.of(band)));
+		int page = 0;
+                int size = 10;
 
+                if (request.getParameter("page") != null && !request.getParameter("page").isEmpty()) {
+                        page = Integer.parseInt(request.getParameter("page")) - 1;
+                }
+
+                if (request.getParameter("size") != null && !request.getParameter("size").isEmpty()) {
+                        size = Integer.parseInt(request.getParameter("size"));
+                }
+		
+		model.addAttribute("bands", bandRepository.findAll(Example.of(band),PageRequest.of(page, size)));
 		model.addAttribute("allRoles", roleRepository.findAll());
-                model.addAttribute("allStyles", styleRepository.findAll());
-                model.addAttribute("allSkills", skillRepository.findAll());
+		model.addAttribute("allStyles", styleRepository.findAll());
+		model.addAttribute("allSkills", skillRepository.findAll());
 
-                return "bands";
+		return "bands";
 
 	} 
 
