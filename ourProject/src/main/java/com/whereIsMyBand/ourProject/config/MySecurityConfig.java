@@ -17,6 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 			http     					
 			.authorizeRequests()
 		    	.antMatchers("/mailoutput").hasRole("ADMIN")
+		    	.antMatchers("/band").hasRole("ADMIN")
 		  //  	.and()
 	      //  .formLogin()
 	            .and()

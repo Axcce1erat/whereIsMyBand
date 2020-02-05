@@ -1,44 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<meta charset="UTF-8">
-		<title>Band</title>
+   <head>
+	  <title>Find your Band!</title>
+	  <title th:replace="fragments/header-css :: top"></title>
 	</head>
-	<body>
-		<h3 th:text="'Create Band'">Band</h3>
-		<form method="post" th:action="@{/band}" th:object="${band}">
-			<!-- <input name="id" th:field="*{id}" type="hidden"> -->
-			<label for="band-bandName">BandName:</label>
-			<input id="band-bandName" name="bandName" placeholder="AC/DC" required th:field="*{bandName}" type="text">
-			<br><br>
-			<label for="band-city">City:</label>
-			<input id="band-city" name="city" placeholder="Darmstadt" required th:field="*{city}" type="text">
-			<br><br>
-			<label for="role">Select a role:</label>
-			<select id="role" name="role">
-				<option th:each="role : ${allRoles}" th:text="${role.roleName}"
-		     th:value="${role.id}">
-				</option>
-			</select>
+<body>
+<div class="container">
+ <!--Navigation-->
+<div th:replace="fragments/navbar :: nav"></div>
 
-			<br><br>
-			<label for="style">Select a style:</label>
-			<select id="style" name="style">
-				<option th:each="style : ${allStyles}" th:text="${style.styleName}"
-		      th:value="${style.id}">style name
-				</option>
-			</select>
-			<br><br>
-			<label for="skill">Select a skill:</label>
-			<select id="skill" name="skill">
-				<option th:each="skill : ${allSkills}" th:text="${skill.level}"
-		      th:value="${skill.id}">skill level
-				</option>
-			</select>
-			<br><br>
-			<input type="submit" value="Send">
-		</form>
-		<br>
-		<a href="/bands">Return to the list</a>
-	</body>
+<div th:replace="fragments/mitte-band :: band"></div>
+</div>
+<!--Footer -->
+<div th:replace="fragments/footer :: bottom"></div>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<!-- jQuery (wird für Bootstrap JavaScript-Plugins benötigt) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Binde alle kompilierten Plugins zusammen ein (wie hier unten) oder such dir einzelne Dateien nach Bedarf aus -->
+</body>
 </html>
