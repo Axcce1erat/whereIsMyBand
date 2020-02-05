@@ -1,100 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-   <head>
-      <script src="https://kit.fontawesome.com/fbb4acb8af.js" crossorigin="anonymous"></script>
-      <!--BIBLIOTHEK FÜR SOCIAL MEDIA ICONS -->
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <!-- Die 3 Meta-Tags oben *müssen* zuerst im head stehen; jeglicher sonstiger head-Inhalt muss *nach* diesen Tags kommen -->
-      <title>Find Band</title>
-      <!-- Bootstrap -->
-      <link href="css/bootstrap.min.css" rel="stylesheet">
-      <link href="css/style.css" rel="stylesheet">
-      <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-      <!-- Unterstützung für Media Queries und HTML5-Elemente in IE8 über HTML5 shim und Respond.js -->
-      <!-- ACHTUNG: Respond.js funktioniert nicht, wenn du die Seite über file:// aufrufst -->
-      <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-      <![endif]-->
-   </head>
-   <body class="container">
-      <!-- Navigation + Bild in der Navigation -->
-      <!--Navbar-->
-      <nav id="navigation" class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
-         <span class="navbar-toggler-icon"></span>
-         </button>
-         <div class="collapse navbar-collapse" id="basicExampleNav">
-            <ul class="navbar-nav mr-auto" data-toggle="collapse" data-target=".navbar-collapse">
-               <li class="nav-item"><a class="nav-link" href="https://localhost:8443/#top">Home</a></li>
-               <li class="nav-item"><a class="nav-link" href="https://localhost:8443/#ContactUsForm"> Contact Us</a></li>
-               <li class="nav-item"><a class="nav-link" href="https://localhost:8443/#AboutUs">About Us</a></li>
-            </ul>
-         </div>
-      </nav>
-      <!--Bild unter Navigation-->
-      <div id="mainPicture">
-         <img class="galleryImgMain" src="pictures/Team/hiclipart.com(1).png" style="height:20em;width:100%; border-radius:5px" alt="A picture of music notes">
-      </div>
-      <div id="about-us">
-      <div class="mb-4">&nbsp;</div>
-      <div class="row d-flex justify-content-center">
-      <div class="col-md-12 mb-4">
-      <div class="card">
-         <h4 class="card-header bg-dark info-color white-text text-center py-4"><strong>Good Luck !</strong></h4>
-	 <a href="/">Back to home!</a>
-         <br>
-         <div class="band-finder-table">
-            <table class="table">
-               <thead class="thead-dark">
-                  <tr>
-                     <th scope="col">Name</th>
-                     <th scope="col">Adresse</th>
-		     <th scope="col">Phone</th>
-		     <th scope="col">Message</th>
-		     
-		     <th></th>
-		     <th></th>
-                  </tr>
-               </thead>
-               <tbody>
-		     <tr th:each="mail : ${mailoutput}">
-		     <td th:text="${mail.name}">Name</td>
-		     <td th:text="${mail.adress}">Adresse</td>
-		     <td th:text="${mail.phone}">Phone</td>
-		     <td th:text="${mail.message}">Message</td>
-	              </tr>
-               </tbody>
-            </table>
-         </div>
-      </div>
-      <!--Footer -->
-      <footer class="page-footer font-small sticky-bottom bottom-dark bg-dark">
-         <div class="container text-center text-md-left">
-            <div class="row">
-               <div class="col-sm-6 mx-auto">
-               </div>
-            </div>
-            <!-- Social buttons -->
-            <div class="list-unstyled list-inline text-center">
-               <a class="s-p" href="https://www.pinterest.de/" target="_blank"><span class="s-p"><i class="fab fa-pinterest fa-sm"></i></span></a>
-               <a class="s-f" href="https://www.facebook.com/" target="_blank"><span class="s-f"><i class="fab fa-facebook fa-sm"></i></span></a>
-               <a class="s-t" href="https://twitter.com/?lang=de" target="_blank"><span class="s-t"><i class="fab fa-twitter fa-sm"></i></span></a>
-               <a class="s-s" href="https://www.snapchat.com/l/de-de/" target="_blank"><span class="s-s"><i class="fab fa-snapchat-ghost fa-sm"></i></span></a>
-               <a class="s-l" href="https://de.linkedin.com/" target="_blank"><span class="s-l"><i class="fab fa-linkedin-in fa-sm"></i></span></a>
-               <a class="s-g" href="https://plus.google.com" target="_blank"><span class="s-g"><i class="fab fa-google-plus fa-sm"></i></span></a>
-            </div>
-         </div>
-      </footer>
-      <!-- Optional JavaScript -->
-      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-      <!-- jQuery (wird für Bootstrap JavaScript-Plugins benötigt) -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-      <!-- Binde alle kompilierten Plugins zusammen ein (wie hier unten) oder such dir einzelne Dateien nach Bedarf aus -->
+  <head>
+      <title>Find your Band!</title>
+      <title th:replace="fragments/header-css :: top"></title>
+  </head>
+<body>
+<div class="container">
+<!--Navigation-->
+<div th:replace="fragments/navbar :: nav"></div>  
+
+<!--Ausgabe der Mails-->
+<div th:replace="fragments/mitte-mailoutput :: output"></div>
+<!--Footer -->
+<div th:replace="fragments/footer :: bottom"></div>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<!-- jQuery (wird für Bootstrap JavaScript-Plugins benötigt) -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Binde alle kompilierten Plugins zusammen ein (wie hier unten) oder such dir einzelne Dateien nach Bedarf aus -->
    </body>
 </html>
