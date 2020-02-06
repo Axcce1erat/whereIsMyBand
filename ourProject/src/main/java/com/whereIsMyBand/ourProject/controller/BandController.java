@@ -48,6 +48,8 @@ public class BandController {
 		int page = 0;
 		int size = 10;
 
+		System.out.println("selectedSkill "+request.getParameter("selectedSkill"));
+
 		if (request.getParameter("page") != null && !request.getParameter("page").isEmpty()) {
 			page = Integer.parseInt(request.getParameter("page")) - 1;
 		}
@@ -86,6 +88,8 @@ public class BandController {
                 }
 		
 		model.addAttribute("bands", bandRepository.findAll(Example.of(band),PageRequest.of(page, size)));
+		model.addAttribute("selectedSkill", skill.getId());
+		System.out.println("uebergeben"+ skill.getLevel());	
 		model.addAttribute("allRoles", roleRepository.findAll());
 		model.addAttribute("allStyles", styleRepository.findAll());
 		model.addAttribute("allSkills", skillRepository.findAll());
