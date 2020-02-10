@@ -30,6 +30,7 @@ import java.util.Collections;
 @Controller
 public class BandController {
 
+
 	@Autowired
 	private BandRepository bandRepository;
 
@@ -43,7 +44,13 @@ public class BandController {
 	private RoleRepository roleRepository;
 
 	@GetMapping("/bands")
-	public String getAll (HttpServletRequest request, Model model) {
+	public String getAll (HttpServletRequest request, Model model, @ModelAttribute Role role, @ModelAttribute Style style, @ModelAttribute Skill skill) {
+
+	
+		Band band = new Band();
+                band.setStyle(style);
+                band.setRole(role);
+                band.setSkill(skill);
 
 		int page = 0;
 		int size = 10;
@@ -65,7 +72,7 @@ public class BandController {
 		model.addAttribute("allSkills", skillRepository.findAll());
 
 		return "bands";
-	}
+	} 
 
 
 	@PostMapping("/bands")
@@ -75,6 +82,7 @@ public class BandController {
 		band.setStyle(style);
 		band.setRole(role);
 		band.setSkill(skill);
+
 
 		int page = 0;
                 int size = 10;
@@ -89,14 +97,15 @@ public class BandController {
 		
 		model.addAttribute("bands", bandRepository.findAll(Example.of(band),PageRequest.of(page, size)));
 		model.addAttribute("selectedSkill", skill.getId());
-		System.out.println("uebergeben"+ skill.getLevel());	
+		model.addAttribute("selectedStyle", style.getId());
+		model.addAttribute("selectedRole", role.getId());
 		model.addAttribute("allRoles", roleRepository.findAll());
 		model.addAttribute("allStyles", styleRepository.findAll());
 		model.addAttribute("allSkills", skillRepository.findAll());
 
 		return "bands";
 
-	} 
+	}
 
 	@GetMapping("/band")
 	public String getBand(Model model) {
