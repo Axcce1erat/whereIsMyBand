@@ -2,16 +2,15 @@ body{
   padding-top: 80px;
 
   
-}                                                                                       /* FORMATIERUNG FÜR DEN BODY, HINTERGRUND */
+}                                     /* FORMATIERUNG FÜR DEN BODY, HINTERGRUND */
 
 .navbar {
-  width: 58.2%;                                                                         /* FORMATIERUNG FÜR DEN NAVBAR WIDTH, PASSEND ZUM FOOTER */
   margin: auto;
   height: 10.5%;
 }
 
 
-.navbar-nav li a{                                                                       /* FORMATIERUNG FÜR DIE FONT IM NAVBAR */
+.navbar-nav li a{                      /* FORMATIERUNG FÜR DIE FONT IM NAVBAR */
   color: white !important;
   font-weight: bold;
   font-family: Arial;
@@ -19,38 +18,45 @@ body{
 }
 
 
-.galleryImgMain{                                                                        /* FORTMATIERUNG FÜR HEADER IMG & ABOUT US IMG */                              
+.galleryImgMain{                       /* FORTMATIERUNG FÜR ABOUT US IMG */                              
   height:16em;
   width:100%;
   object-fit: cover;
   object-position:center;
 }
 
+.headPicture{                          /* FORTMATIERUNG FÜR HEADER IMG */   
+object-fit: cover;
+object-position:center;
+margin-bottom: -60px;
+}
 
-.card h4{                                                                               /* FORMATIERUNG FÜR ALLE H4, DASS DER FONT WEIẞ IST */
+
+
+.card h4{                              /* FORMATIERUNG FÜR ALLE H4, DASS DER FONT WEIẞ IST UND GLEICHE GRÖẞE */
   color:white;
   font-family: Arial;
-  font-size: 20px;
+  font-size: 21px;
 }
 
 
-.card-body button {                                                                     /* FORMATIERUNG FÜR DEN BUTTON IN CONTACT FORM, HOVER EFFEKT ETC */
-  background-color:#0db2db;
-  border-radius:42px;
-  display:inline-block;
-  cursor:pointer;
-  color:#ffffff;
-  font-family:Arial;
-  font-weight: bold;
-  font-size:17px;
-  padding: 9px 15px;
-  text-decoration:none;
-  text-shadow:0px 1px 0px #2f6627;
-  margin-left: 45%;
-  
+.card button {                    /* FORMATIERUNG FÜR DEN GET STARTED BUTTON IN "FIND A BAND" */
+    width: 28%;
+    height: 55px;
+    background: #0db2db;
+    font-weight: bold;
+    color: #ffffff;
+    cursor: pointer;
+    font-family:Arial;
+    font-size:18px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #2f6627;
+    border: none;
+    display:inline-block;  
+    border-radius:1rem;
 
 }
-.card button:hover {
+.card button:hover {                  /* HOVER EFFECT FÜR GET STARTED BUTTON IN "FIND A BAND" */ 
   background-color:#99d678;
 }
 .card button:active {
@@ -104,19 +110,19 @@ body{
 
 
 
-.contact-form{                                                                          /* FORMATIERUNG FÜR DEN CONTACT US FORM */
+.contact-form{                        /* FORMATIERUNG FÜR DEN CONTACT US FORM */
     background: #fff;
     margin-top: 5%;
     margin-bottom: 2%;
     width: 100%;
 }
-.contact-form .form-control{                                                            /* FORMATIRUNG FÜR "YOUR MESSAGE" BOX DAS ES LEICHT RUND */                                                     
+.contact-form .form-control{          /* FORMATIRUNG FÜR "YOUR MESSAGE" BOX DAS ES LEICHT RUND ECKEN HAT */                                                     
     border-radius:1rem;
 }
-.contact-image{                                                                         /* FORMATIERUNG FÜR DEN CLASS CONTACT-IMAGE */
+.contact-image{                       /* FORMATIERUNG FÜR DEN CLASS CONTACT-IMAGE */
     text-align: center;
 }
-.contact-image img{                                                                     /* FORMATIERUNG NUR FÜR DEN CONTACT IMAGE IM CLASS */
+.contact-image img{                   /* FORMATIERUNG NUR FÜR DEN CONTACT IMAGE IM CLASS */
     border-radius: rem;
     width: 15%;
     margin-top: -3%;
@@ -124,43 +130,29 @@ body{
 
     
 }
-.contact-form form{                                                                     /* FORMATIERUNG FÜR DEN PADDING AN "CONTACT US" FORM */
+.contact-form form{                   /* FORMATIERUNG FÜR DEN PADDING AN "CONTACT US" FORM */
     padding: 9%;
 }
-.contact-form form .row{                                                                /* FORMATIERUNG FÜR DEN ROW IN DEN "CONTAC US" FORM */
+.contact-form form .row{              /* FORMATIERUNG FÜR DEN ROW IN DEN "CONTAC US" FORM */
     margin-bottom: -11%;
     margin-top: -9%;
 }
 
-.contact-form .btnContact {                                                             /* FORMATIERUNG FÜR DEN BUTTON IN CONTACT FORM, HOVER EFFEKT ETC */
-    width: 32%;
-    border: none;
-    border-radius: 42px;
-    padding: 9px 10px;
+.contact-form .btnContact {           /* FORMATIERUNG FÜR DEN BUTTON IN CONTACT FORM, HOVER EFFEKT ETC */
+    width: 28%;
+    height: 55px;
     background: #0db2db;
     font-weight: bold;
     color: #ffffff;
     cursor: pointer;
-    display:inline-block;
     font-family:Arial;
-    font-size:17px;
+    font-size:18px;
     text-decoration:none;
     text-shadow:0px 1px 0px #2f6627;
-}
-.btnContactSubmit
-{
-    width: 32%;
-    border-radius: 42px;
-    padding: 9px 10px;
-    color: #ffffff;
-    background-color: #0db2db;
     border: none;
-    cursor: pointer;
-    display:inline-block;
-    font-family:Arial;
-    font-size:17px;
-    text-decoration:none;
-    text-shadow:0px 1px 0px #2f6627;
+    display:inline-block;  
+    border-radius:1rem;
+
 }
 
 .contact-form .btnContact:hover {
