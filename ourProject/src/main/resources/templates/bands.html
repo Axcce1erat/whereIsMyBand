@@ -104,41 +104,53 @@
 
 
 
-							<!-- Here starts bands pagination -->
+							<!-- Here starts bands pagination with left and right buttons. It doesn't work as expected so we don't use it. See a simple solution below -->
 
 
-							<nav aria-label="Pagination" th:if="${bands.totalPages gt 0}">
-								<ul class="pagination justify-content-center font-weight-medium">
-									<li class="page-item" th:classappend="${bands.number eq 0} ? 'disabled'">
-										<a class="page-link svg-icon"
-	     th:href="@{/bands?page={id}(id=${bands.number lt 2 ? 1 : bands.number})}"
-	     aria-label="Previous"
-      title="Previous Page" rel="tooltip">
-											<span aria-hidden="true" data-feather="chevrons-left" width="20" height="20"></span>
-										</a>
-									</li>
-									<li class="page-item" th:classappend="${i eq bands.number + 1} ? 'active'"
-	     th:each="i : ${#numbers.sequence( bands.number + 1, bands.totalPages > 10 + bands.number ? bands.number + 10 : bands.totalPages, 1)}">
-										<a class="page-link" th:href="@{/bands(selectedSkill=${selectedSkill},selectedStyle=${selectedStyle},selectedRole=${selectedRole},page=${i})}" th:text="${i}"
-	     th:title="${'Page '+ i}"
-	     rel="tooltip"></a>
-									</li>
-									<li class="page-item disabled" th:if="${bands.number + 10 < bands.totalPages}">
-										<a class="page-link svg-icon" href="#">
-											<span data-feather="more-horizontal" width="20" height="20"></span>
-										</a>
-									</li>
-									<li class="page-item" th:classappend="${bands.number + 1 eq bands.totalPages} ? 'disabled'">
-										<a class="page-link svg-icon" th:href="@{/bands?page={id}(id=${bands.number + 2})}"
-	     aria-label="Next"
-      title="Next Page" rel="tooltip">
-											<span aria-hidden="true" data-feather="chevrons-right" width="20" height="20"></span>
-										</a>
-									</li>
-								</ul>
-							</nav>
+							<!--	<nav aria-label="Pagination" th:if="${bands.totalPages gt 0}">
+	       <ul class="pagination justify-content-center font-weight-medium">
+	       <li class="page-item" th:classappend="${bands.number eq 0} ? 'disabled'">
+	       <a class="page-link svg-icon"
+	       th:href="@{/bands?page={id}(id=${bands.number lt 2 ? 1 : bands.number})}"
+	       aria-label="Previous"
+	       title="Previous Page" rel="tooltip">
+	       <span aria-hidden="true" data-feather="chevrons-left" width="20" height="20"></span>
+	       </a>
+	       </li>
+	       <li class="page-item" th:classappend="${i eq bands.number + 1} ? 'active'"
+	       th:each="i : ${#numbers.sequence( bands.number + 1, bands.totalPages > 10 + bands.number ? bands.number + 10 : bands.totalPages, 1)}">
+	       <a class="page-link" th:href="@{/bands(selectedSkill=${selectedSkill},selectedStyle=${selectedStyle},selectedRole=${selectedRole},page=${i})}" th:text="${i}"
+	       th:title="${'Page '+ i}"
+	       rel="tooltip"></a>
+	       </li>
+	       <li class="page-item disabled" th:if="${bands.number + 10 < bands.totalPages}">
+	       <a class="page-link svg-icon" href="#">
+	       <span data-feather="more-horizontal" width="20" height="20"></span>
+	       </a>
+	       </li>
+	       <li class="page-item" th:classappend="${bands.number + 1 eq bands.totalPages} ? 'disabled'">
+	       <a class="page-link svg-icon" th:href="@{/bands?page={id}(id=${bands.number + 2})}"
+	       aria-label="Next"
+	       title="Next Page" rel="tooltip">
+	       <span aria-hidden="true" data-feather="chevrons-right" width="20" height="20"></span>
+	       </a>
+	       </li>
+	       </ul>
+	       </nav> -->
 
 
+
+	       <!-- simple pagination with no left and right buttons.  -->
+
+	       <nav aria-label="Pagination" th:if="${bands.totalPages gt 0}">
+		       <ul class="pagination justify-content-center font-weight-bold">
+			       <li class="page-item" th:classappend="${i eq bands.number + 1} ? 'active'"
+	      th:each="i : ${#numbers.sequence( 1, bands.totalPages, 1)}">
+				       <a class="page-link" th:href="@{/bands(selectedSkill=${selectedSkill},selectedStyle=${selectedStyle},selectedRole=${selectedRole},page=${i})}" th:text="${i}"
+	      th:title="${'Page '+ i}" data-toggle="tooltip"></a>
+			       </li>
+		       </ul>
+	       </nav>
 
 
 						</div>

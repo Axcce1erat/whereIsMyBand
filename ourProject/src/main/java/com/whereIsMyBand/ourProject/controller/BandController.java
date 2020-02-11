@@ -43,10 +43,27 @@ public class BandController {
 	@Autowired
 	private RoleRepository roleRepository;
 
+
 	@GetMapping("/bands")
 	public String getAll (HttpServletRequest request, Model model, @ModelAttribute Role role, @ModelAttribute Style style, @ModelAttribute Skill skill) {
 
-	
+		System.out.println("GetMapping");
+		if(!(request.getParameter("selectedRole")==null)){
+			if(!(request.getParameter("selectedRole").equals(""))) {
+				role.setId(Long.parseLong(request.getParameter("selectedRole")));
+			}
+		}
+		if(!(request.getParameter("selectedStyle")==null)){
+			if(!(request.getParameter("selectedStyle").equals(""))) {
+				style.SetId(Long.parseLong(request.getParameter("selectedStyle")));
+			}
+		}
+		if(!(request.getParameter("selectedSkill")==null)){
+			if(!(request.getParameter("selectedSkill").equals(""))) {
+				skill.setId(Long.parseLong(request.getParameter("selectedSkill")));
+			}
+		}
+
 		Band band = new Band();
                 band.setStyle(style);
                 band.setRole(role);
@@ -56,24 +73,24 @@ public class BandController {
 		int size = 10;
 
 		System.out.println("selectedSkill "+request.getParameter("selectedSkill"));
-
 		if (request.getParameter("page") != null && !request.getParameter("page").isEmpty()) {
 			page = Integer.parseInt(request.getParameter("page")) - 1;
 		}
-
 		if (request.getParameter("size") != null && !request.getParameter("size").isEmpty()) {
 			size = Integer.parseInt(request.getParameter("size"));
 		}
 
-
-		model.addAttribute("bands", bandRepository.findAll(PageRequest.of(page, size)));
+		model.addAttribute("bands", bandRepository.findAll(Example.of(band),PageRequest.of(page, size)));
+		System.out.println(skill.getId());
+		model.addAttribute("selectedSkill", skill.getId());
+		model.addAttribute("selectedStyle", style.getId());
+		model.addAttribute("selectedRole", role.getId());
 		model.addAttribute("allRoles", roleRepository.findAll());
 		model.addAttribute("allStyles", styleRepository.findAll());
 		model.addAttribute("allSkills", skillRepository.findAll());
 
 		return "bands";
-	} 
-
+	}
 
 	@PostMapping("/bands")
 	public String searchBand(HttpServletRequest request, Model model, @ModelAttribute Role role, @ModelAttribute Style style, @ModelAttribute Skill skill) {
