@@ -1,72 +1,119 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-   <title>Navbar-Fragment</title>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
-</head>
-<body>
-<div th:fragment="suche"> 
-<div id="mainPicture">
-   <img class="headPicture" src="pictures/Team/hiclipart.com(1).png" style="height:20em;width:99.99%; border-radius:5px" alt="A picture of music notes">
-</div>
-<div id="about-us">
-   <div class="mb-4">&nbsp;</div>
-   <div class="row d-flex justify-content-center">
-      <div class="col-md-12 mb-4">
-         <div class="card">
-            <h4 class="card-header bg-dark info-color white-text text-center py-4"><strong>Good Luck Searching!</strong></h4>
-            <br><br>
-            <form method="post" th:action="@{/bands}" th:object="${bands}">
-               <label for="role">Select a role:</label>
-               <select id="role" name="role">
-                  <option value=" ">----Select----</option>
-                  <option th:each="role : ${allRoles}" th:text="${role.roleName}"
-    th:value="${role.id}">
-                  </option>
-               </select>
-               <br><br>
-               <label for="style">Select a style:</label>
-               <select id="style" name="style">
-                  <option value=" ">----Select----</option>
-                  <option th:each="style : ${allStyles}" th:text="${style.styleName}"
-     th:value="${style.id}">
-                  </option>
-               </select>
-               <br><br>
-               <label for="skill">Select a skill:</label>
-               <select id="skill" name="skill">
-                  <option value=" ">----Select----</option>
-                  <option th:each="skill : ${allSkills}" th:text="${skill.level}"
-     th:value="${skill.id}">skill level
-                  </option>
-               </select>
-               <br><br>
-               <input type="submit" value="Send">
-            </form>
-            <br>
-            <div class="band-finder-table">
-               <table class="table">
-                  <thead class="thead-dark">
-                     <tr>
-                        <th scope="col">Band Name</th>
-                        <th scope="col">City</th>
-                        <th scope="col">Role</th>
-                        <th scope="col">Style</th>
-                        <th scope="col">Skill</th>
-                     </tr>
-                  </thead>
-                  <tbody>
-                     <tr th:each="band : ${bands}">
-                        <td th:text="${band.bandName}">Band Name</td>
-                        <td th:text="${band.city}">City</td>
-                        <td th:text="${band.role.roleName}">Role Name</td>
-                        <td th:text="${band.style.styleName}">style Name</td>
-                        <td th:text="${band.skill.level}">Level</td>
-                     </tr>
-                  </tbody>
-               </table>
-   </div>
-  </div>
- </div>
-</body>
+	<head>
+		<title>Navbar-Fragment</title>
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+	</head>
+	<body>
+		<div th:fragment="suche"> 
+			<div id="mainPicture">
+				<img class="galleryImgMain" src="pictures/Team/hiclipart.com(1).png" style="height:20em;width:100%; border-radius:5px" alt="A picture of music notes">
+			</div>
+			<div id="about-us">
+				<div class="mb-4">&nbsp;</div>
+				<div class="row d-flex justify-content-center">
+					<div class="col-md-12 mb-4">
+						<div class="card">
+							<h4 class="card-header bg-dark info-color white-text text-center py-4"><strong>Good Luck !</strong></h4>
+							<br><br>
+							<form method="post" th:action="@{/bands}" th:object="${bands}">
+								<label for="role">Select a role:</label>
+								<select id="role" name="role">
+									<option value=" ">----Select----</option>
+									<option th:each="role : ${allRoles}" th:text="${role.roleName}"
+		 th:value="${role.id}">
+									</option>
+								</select>
+								<br><br>
+								<label for="style">Select a style:</label>
+								<select id="style" name="style">
+									<option value=" ">----Select----</option>
+									<option th:each="style : ${allStyles}" th:text="${style.styleName}"
+		 th:value="${style.id}">
+									</option>
+								</select>
+								<br><br>
+								<label for="skill">Select a skill:</label>
+								<select id="skill" name="skill">
+									<option value=" ">----Select----</option>
+									<option th:each="skill : ${allSkills}" th:text="${skill.level}"
+		 th:value="${skill.id}">skill level
+									</option>
+								</select>
+								<br><br>
+								<input type="submit" value="Send">
+							</form>
+							<br>
+							<div class="band-finder-table">
+								<table class="table">
+									<thead class="thead-dark">
+										<tr>
+											<th scope="col">Band Name</th>
+											<th scope="col">City</th>
+											<th scope="col">Role</th>
+											<th scope="col">Style</th>
+											<th scope="col">Skill</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="band : ${bands}">
+											<td th:text="${band.bandName}">Band Name</td>
+											<td th:text="${band.city}">City</td>
+											<td th:text="${band.role.roleName}">Role Name</td>
+											<td th:text="${band.style.styleName}">style Name</td>
+											<td th:text="${band.skill.level}">Level</td>
+										</tr>
+									</tbody>
+								</table>
+
+								<!-- Here starts bands pagination with left and right buttons. It doesn't work as expected so we don't use it. See a simple solution below -->
+
+
+								<!--    <nav aria-label="Pagination" th:if="${bands.totalPages gt 0}">
+		<ul class="pagination justify-content-center font-weight-medium">
+		<li class="page-item" th:classappend="${bands.number eq 0} ? 'disabled'">
+		<a class="page-link svg-icon"
+		th:href="@{/bands?page={id}(id=${bands.number lt 2 ? 1 : bands.number})}"
+		aria-label="Previous"
+		title="Previous Page" rel="tooltip">
+		<span aria-hidden="true" data-feather="chevrons-left" width="20" height="20"></span>
+		</a>
+		</li>
+		<li class="page-item" th:classappend="${i eq bands.number + 1} ? 'active'"
+		th:each="i : ${#numbers.sequence( bands.number + 1, bands.totalPages > 10 + bands.number ? bands.number + 10 : bands.totalPages, 1)}">
+		<a class="page-link" th:href="@{/bands(selectedSkill=${selectedSkill},selectedStyle=${selectedStyle},selectedRole=${selectedRole},page=${i})}" th:text="${i}"
+		th:title="${'Page '+ i}"
+		rel="tooltip"></a>
+		</li>
+		<li class="page-item disabled" th:if="${bands.number + 10 < bands.totalPages}">
+		<a class="page-link svg-icon" href="#">
+		<span data-feather="more-horizontal" width="20" height="20"></span>
+		</a>
+		</li>
+		<li class="page-item" th:classappend="${bands.number + 1 eq bands.totalPages} ? 'disabled'">
+		<a class="page-link svg-icon" th:href="@{/bands?page={id}(id=${bands.number + 2})}"
+		aria-label="Next"
+		title="Next Page" rel="tooltip">
+		<span aria-hidden="true" data-feather="chevrons-right" width="20" height="20"></span>
+		</a>
+		</li>
+		</ul>
+		</nav> -->
+
+		<!-- simple pagination with no left and right buttons.  -->
+
+		<nav aria-label="Pagination" th:if="${bands.totalPages gt 0}">
+			<ul class="pagination justify-content-center font-weight-bold">
+				<li class="page-item" th:classappend="${i eq bands.number + 1} ? 'active'"
+	th:each="i : ${#numbers.sequence( 1, bands.totalPages, 1)}">
+					<a class="page-link" th:href="@{/bands(selectedSkill=${selectedSkill},selectedStyle=${selectedStyle},selectedRole=${selectedRole},page=${i})}" th:text="${i}"
+	th:title="${'Page '+ i}" data-toggle="tooltip"></a>
+				</li>
+			</ul>
+		</nav>
+							</div>
+						</div>
+					</div>
+	</body>
 </html>
+
