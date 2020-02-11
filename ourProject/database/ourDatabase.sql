@@ -36,7 +36,7 @@ CREATE TABLE `band` (
   CONSTRAINT `FK9jmwloco3tymh4dcmb7oq9cwi` FOREIGN KEY (`style_id`) REFERENCES `style` (`id`),
   CONSTRAINT `FKhn4tk1qoi2xokf4qixy8sbmb7` FOREIGN KEY (`skill_id`) REFERENCES `skill` (`id`),
   CONSTRAINT `FKr4xh0qxptig557eqo36oyf47y` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=94 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +45,6 @@ CREATE TABLE `band` (
 
 LOCK TABLES `band` WRITE;
 /*!40000 ALTER TABLE `band` DISABLE KEYS */;
-INSERT INTO `band` VALUES (1,'AC/Bfgsfwef','Sydney',1,1,1),(2,'Fettes Broetchen','Hamburg',2,2,1),(3,'Wu-Tang-Gruppe','New-York',8,1,7),(4,'Guns n\' flowers','Boston',4,4,15),(5,'Klausis Schabernack Buben','Darmstadt',11,5,12),(6,'Zeichenkette','Berlin',11,4,13),(7,'RedNecks','Ohio',4,3,10),(8,'Wildecker_Herzdamen','Frankfurt',4,3,7),(9,'Acca','Stockholm',8,3,8),(10,'Bloodhound_Group','Las Vegas',6,3,9),(11,'Beginner','Hamburg',7,3,6),(12,'Dream-Root','Paderborn',4,2,6),(13,'Seven Chicks','Munich',5,2,5),(14,'UguDugu','Seattle',8,2,5),(15,'Lowlands','Portland',10,4,3),(16,'Highlands','Bristol',11,5,2),(17,'Devonshire','Rom',1,1,1),(18,'Sachsen-Anhalt','Mainz',2,1,3),(19,'Kuno','Magdeburg',3,3,2),(20,'Klausurtagung','Füssen',5,2,4),(21,'Unix-Shellac','Kiel',4,2,5),(22,'Öfterreich','Basel',4,2,6),(23,'Killing Cowboys','Hamburg',7,2,7),(24,'Plastik-Bonbon','Berlin',8,1,8),(25,'Julo','Cologne',10,5,8),(26,'Finding Limo','Berlin',6,1,10),(27,'Seek\'Destroy\'Reboot','Cologne',3,4,2),(28,'TZ-489','Paderborn',12,4,2),(29,'Dauner-Remains','Stuttgart',8,2,11),(30,'Desasterhoch3','Stuttgart',7,3,13),(31,'Zollstock','Jülich',7,3,10),(32,'TöchterDeinerStadt','Mannheim',3,2,9),(33,'Klavier mal Vier','Kleve',2,4,7),(34,'Metermaß','Munich',3,5,8),(35,'PaderKiller','Paderborn',1,1,4),(36,'HeinzKuslowski-Quintett','Stuttgart',4,4,6),(43,'Liebes-Aus','Bochum',4,2,5),(44,'Kinderkrim','Düsseldorf',5,2,3),(50,'Kulinarik2000','Saarbrücken',2,3,4),(51,'Jack AB4-Project','Kiel',1,4,3),(52,'The Gungas','Fulda',7,1,8),(53,'Bonobos','Nuremberg',8,5,9),(54,'The Kollers','Heidelberg',8,2,10),(58,'Frozen July','Düsseldorf',8,2,11),(59,'Early Easter','Düsseldorf',10,2,8),(60,'Klingelbeutel','Berlin',11,4,6),(61,'Geldbörse','Fulda',1,3,7),(62,'Gone Gone Gone','Frankfurt/Main',3,5,6),(63,'The Gnadenlos','Frankfurt/Main',7,4,5),(64,'The Devil & The Devil2','Berlin',7,4,2),(65,'The Undercats','Cologne',2,2,1),(66,'The Rheinbows','Berlin',2,3,1),(67,'LachenWeinenTanzen','Hamburg',4,2,1),(70,'GinGinGin','Kassel',6,3,4),(71,'Riesling2019','Oestrich-Winkel',2,3,4),(72,'Käsebrötchen','Hamburg',9,2,7),(73,'Wurstbrot','Dortmund',11,2,8),(74,'3imWeckla','Nuremberg',12,2,9),(75,'Die Allermäuse','Hohenaverbergen',2,5,15),(76,'MeineBandIstCool','Quito',5,2,12),(77,'dasdasd','adasdasd',1,1,1),(78,'DellBrothers','München',8,3,5),(79,'Topf','Hamburg',6,4,12),(81,'Deisis Band','Darmstadt',2,4,9);
 /*!40000 ALTER TABLE `band` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -63,7 +62,7 @@ CREATE TABLE `mail` (
   `name` varchar(255) DEFAULT NULL,
   `phone` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -72,7 +71,7 @@ CREATE TABLE `mail` (
 
 LOCK TABLES `mail` WRITE;
 /*!40000 ALTER TABLE `mail` DISABLE KEYS */;
-INSERT INTO `mail` VALUES (1,'meineMail','Nabend','Malte Knezevic',''),(2,'malte@test.de','Ich finde ja, dass ihr eine klasse Arbeit macht. Ich bin echt wahnsinnig stolz auf euch!!!','Malte Knezevic','0431 55563213'),(3,'malte@test.de','rwerwerwer','Malte Knezevic','134363414'),(4,'sdwdqddw@mail.de','qfsdfsdvsdvc','BErth','412415213'),(5,'berth@hotmail.de','Hallo, tolle Seite!','Berth','014646654535');
+INSERT INTO `mail` VALUES (1,'denis.kutlovci@telekom.de','Test test','Denis','5255408'),(2,'d@hotmail.com','ds','sdf','sd'),(3,'test@gmail.com','test','test','test'),(4,'denis.kutlovci@telekom.de','ds','ssdf','645454');
 /*!40000 ALTER TABLE `mail` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -87,7 +86,7 @@ CREATE TABLE `role` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `role_name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -96,7 +95,6 @@ CREATE TABLE `role` (
 
 LOCK TABLES `role` WRITE;
 /*!40000 ALTER TABLE `role` DISABLE KEYS */;
-INSERT INTO `role` VALUES (1,'Hornist'),(2,'Trompeter'),(3,'Bassist/in'),(4,'Drummer/in'),(5,'Keyboarder/in'),(6,'Gitarrist/in'),(7,'Flötist/in'),(8,'Violinist/in'),(9,'Cellist/in'),(10,'Saxofonist/in'),(11,'Bratschist/in'),(12,'Sänger/in'),(13,'Oboist/in'),(14,'Klarinettist/in'),(15,'Posaunist/in');
 /*!40000 ALTER TABLE `role` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -111,7 +109,7 @@ CREATE TABLE `skill` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `level` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -120,7 +118,6 @@ CREATE TABLE `skill` (
 
 LOCK TABLES `skill` WRITE;
 /*!40000 ALTER TABLE `skill` DISABLE KEYS */;
-INSERT INTO `skill` VALUES (1,'Rookie'),(2,'Basic'),(3,'Advanced'),(4,'Expert'),(5,'Genius');
 /*!40000 ALTER TABLE `skill` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -135,7 +132,7 @@ CREATE TABLE `style` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `style_name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -144,7 +141,6 @@ CREATE TABLE `style` (
 
 LOCK TABLES `style` WRITE;
 /*!40000 ALTER TABLE `style` DISABLE KEYS */;
-INSERT INTO `style` VALUES (1,'Rock'),(2,'Pop'),(3,'Rap'),(4,'Punk'),(5,'Reggae'),(6,'Schlager'),(7,'Metal'),(8,'Jazz'),(9,'Country'),(10,'Hip Hop'),(11,'Alternative'),(12,'Electro'),(13,'Soul'),(14,'Funk'),(15,'Volksmusik'),(16,'Other');
 /*!40000 ALTER TABLE `style` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -171,7 +167,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'admin','$2a$10$QTuVQO.7WyVo3lhDURmZaeVq1.nR5kJAjALT79jUeoEkJ74q2MsU.','ADMIN');
+INSERT INTO `user` VALUES (1,'admin','$2a$10$RVM67/oaTqF/V0KietdG1uHRymaIJbxm5anafC8901TaUO4kquqWe','ADMIN');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -184,4 +180,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-02-11 15:47:17
+-- Dump completed on 2020-02-11 15:55:19
