@@ -49,7 +49,7 @@
 						<form method="post" th:action="@{/bands}" th:object="${bands}">
 							<label for="role">Select a role:</label>
 							<select id="role" name="role">
-									<option value=" ">----Select----</option>
+								<option value=" ">----Select----</option>
 								<option th:each="role : ${allRoles}" th:text="${role.roleName}"
 		th:value="${role.id}">
 								</option>
@@ -91,7 +91,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									
+
 									<tr th:each="band : ${bands}">
 										<td th:text="${band.bandName}">Band Name</td>
 										<td th:text="${band.city}">City</td>
