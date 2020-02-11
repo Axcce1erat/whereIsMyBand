@@ -55,8 +55,8 @@ public class BandController {
 	public String searchBand(Model model, @ModelAttribute Role role, @ModelAttribute Style style, @ModelAttribute Skill skill) {
 	
 	 	Band band = new Band();
-		band.setStyle(style);
 		band.setRole(role);
+		band.setStyle(style);
 		band.setSkill(skill);
 
 		model.addAttribute("bands", bandRepository.findAll(Example.of(band)));
@@ -70,9 +70,19 @@ public class BandController {
 	} 
 
 	@GetMapping("/band")
-	public String getBand(Model model) {
+	public String getBand(Model model,
+			      @RequestParam(required = false) Long id) {
 
 		Band band = new Band();
+
+		if (id != null) {
+            Optional<Band> optionalBand = bandRepository.findById(id);
+            if (optionalBand.isPresent()) {
+                band = optionalBand.get();
+
+            }
+		}
+
 
 		model.addAttribute("band", band);
 		model.addAttribute("allRoles", roleRepository.findAll());
