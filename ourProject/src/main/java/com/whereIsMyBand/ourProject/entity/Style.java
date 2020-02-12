@@ -16,10 +16,10 @@ public class Style {
 	private Long id;
 	private String styleName;
 
-	 @OneToMany(mappedBy = "style", cascade = CascadeType.ALL)
-         private List<Band> bands;
+	@OneToMany(mappedBy = "style", cascade = CascadeType.ALL)
+	private List<Band> bands;
 
-	
+
 	public Style(){
 	}
 
@@ -32,7 +32,7 @@ public class Style {
 		return id;
 	}
 
-	public void SetId(Long id){
+	public void setId(Long id){
 		this.id=id;
 	}
 
@@ -44,12 +44,12 @@ public class Style {
 		this.styleName=styleName;
 	}
 
-	 public List<Band> getBands(){
-        	return bands;
-    }
+	public List<Band> getBands(){
+		return bands;
+	}
 
-        public void setBands(List<Band> bands){
-                this.bands=bands;
-    }
+	public void setBands(List<Band> bands){
+		this.bands=bands;
+	}
 
 }

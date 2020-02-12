@@ -23,7 +23,7 @@ public class Role {
 	}
 
 	public Role(String roleName){
-	this.roleName=roleName;
+		this.roleName=roleName;
 	}
 
 	public Long getId(){
@@ -43,12 +43,12 @@ public class Role {
 	}
 
 	public List<Band> getBands(){
-        return bands;
-    }
+		return bands;
+	}
 
-        public void setBands(List<Band> bands){
-        this.bands=bands;
-    }
+	public void setBands(List<Band> bands){
+		this.bands=bands;
+	}
 
 }
 

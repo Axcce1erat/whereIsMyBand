@@ -1,59 +1,91 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-   <title>Navbar-Fragment</title>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
-</head>
-<body>
-     <!--Bild unter Navigation-->
-     <div th:fragment="band"> 
-    
-     <div id="mainPicture">
-      <img class="galleryImgMain" src="pictures/Team/hiclipart.com(1).png" style="height:20em;width:100%; border-radius:5px" alt="Picture Of Music Notes">
-   </div>
-   <div id="TopTop">
-   <div class="mb-4">&nbsp;</div>
-   <div class="row d-flex justify-content-center">
-   <div class="col-md-12 mb-4">
-   <div class="card">
-      <h4 class="card-header bg-dark info-color white-text text-center py-4"><strong>Create a Band</strong></h4>
-      <br>
-      <div class="card-body">
-         <form method="post" th:action="@{/band}" th:object="${band}">
-            <!-- <input name="id" th:field="*{id}" type="hidden"> -->
-            <label for="band-bandName">BandName:</label>
-            <input id="band-bandName" name="bandName" placeholder="AC/DC" required th:field="*{bandName}" type="text">
-            <br><br>
-            <label for="band-city">City:</label>
-            <input id="band-city" name="city" placeholder="Darmstadt" required th:field="*{city}" type="text">
-            <br><br>
-            <label for="role">Select a role:</label>
-            <select id="role" name="role">
-               <option th:each="role : ${allRoles}" th:text="${role.roleName}"
-              th:value="${role.id}">
-               </option>
-            </select>
-   
-            <br><br>
-            <label for="style">Select a style:</label>
-            <select id="style" name="style">
-               <option th:each="style : ${allStyles}" th:text="${style.styleName}"
-               th:value="${style.id}">style name
-               </option>
-            </select>
-            <br><br>
-            <label for="skill">Select a skill:</label>
-            <select id="skill" name="skill">
-               <option th:each="skill : ${allSkills}" th:text="${skill.level}"
-               th:value="${skill.id}">skill level
-               </option>
-            </select>
-            <br><br>
-            <input type="submit" value="Send">
-         </form>
-        <button type="button" onclick="window.location.href = '/';" class="btn btn-primary">Back to home</button>
-      </div>
-   </div>
-  </div>
-</body>
+	<head>
+		<title>Navbar-Fragment</title>
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+	</head>
+	<body>
+		<!--Bild unter Navigation-->
+		<div th:fragment="band"> 
+
+			<div id="mainPicture">
+				<img class="galleryImgMain" src="pictures/Team/hiclipart.com(1).png" style="height:20em;width:100%; border-radius:5px" alt="Picture Of Music Notes">
+			</div>
+			<div id="TopTop">
+				<div class="mb-4">&nbsp;</div>
+				<div class="row d-flex justify-content-center">
+					<div class="col-md-12 mb-4">
+						<div class="card">
+							<h4 class="card-header bg-dark info-color white-text text-center py-4"><strong>Create a Band</strong></h4>
+							<br>
+							<div class="card-body">
+								<form method="post" th:action="@{/band}" th:object="${band}">
+									<input name="id" th:field="*{id}" type="hidden">
+									<label for="band-bandName">BandName:</label>
+									<input id="band-bandName" name="bandName" placeholder="AC/DC" required th:field="*{bandName}" type="text">
+									<br><br>
+									<label for="band-city">City:</label>
+									<input id="band-city" name="city" placeholder="Darmstadt" required th:field="*{city}" type="text">
+									<br><br>
+
+									<label for="role">Select a role:</label>
+									<select id="role" name="roleid" th:value="${bandrole}"> 
+										<option th:each="role : ${allRoles}" th:text="${role.roleName}"
+			   th:value="${role.id}">role name
+										</option>
+									</select>
+									<br><br>
+
+									<label for="style">Select a style:</label>
+									<select id="style" name="styleid">
+										<option th:each="style : ${allStyles}" th:text="${style.styleName}"
+			    th:value="${style.id}">style name
+										</option>
+									</select>
+									<br><br>
+
+
+									<label for="skill">Select a skill:</label>
+									<select id="skill" name="skillid">
+										<option th:each="skill : ${allSkills}" th:text="${skill.level}"
+			    th:value="${skill.id}">skill level
+										</option>
+									</select>
+									<br><br>
+									<input type="submit" value="Send">
+								</form>
+								<button type="button" onclick="window.location.href = '/';" class="btn btn-primary">Back to home</button>
+
+								<br><br>
+								<div class="band-finder-table">
+									<table class="table">
+										<thead class="thead-dark">
+											<tr>
+												<th scope="col">Band Name</th>
+												<th scope="col">City</th>
+												<th scope="col">Role</th>
+												<th scope="col">Style</th>
+												<th scope="col">Skill</th>
+												<th scope="col"></th>
+												<th scope="col"></th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="band : ${bands}">
+												<td th:text="${band.bandName}">Band Name</td>
+												<td th:text="${band.city}">City</td>
+												<td th:text="${band.role.roleName}">Role Name</td>
+												<td th:text="${band.style.styleName}">style Name</td>
+												<td th:text="${band.skill.level}">Level</td>
+												<td><a th:href="@{/band(id=${band.id})}">Edit</a></td>
+												<td><a th:href="@{/band/delete(id=${band.id})}">Remove</a></td>
+											</tr>
+										</tbody>
+									</table>
+
+									</div>
+								</div>
+							</div>
+						</div>
+	</body>
 </html>

@@ -18,17 +18,16 @@ public class Band {
 	private String city;
 
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH, optional = false)
+        @JoinColumn(name = "role_id", nullable = false)
+        private Role role;
+
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH, optional = false)
         @JoinColumn(name = "style_id", nullable = false)
         private Style style;
 
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH, optional = false)
         @JoinColumn(name = "skill_id", nullable = false)
         private Skill skill;
-
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH, optional = false)
-        @JoinColumn(name = "role_id", nullable = false)
-        private Role role;
-
 
 
 	public Band() {
