@@ -29,7 +29,7 @@
 									<br><br>
 
 									<label for="role">Select a role:</label>
-									<select id="role" name="role">
+									<select id="role" name="roleid" th:value="${bandrole}"> 
 										<option th:each="role : ${allRoles}" th:text="${role.roleName}"
 			   th:value="${role.id}">role name
 										</option>
@@ -37,16 +37,16 @@
 									<br><br>
 
 									<label for="style">Select a style:</label>
-                                                                        <select id="style" name="style">
-                                                                                <option th:each="style : ${allStyles}" th:text="${style.styleName}"
-                            th:value="${style.id}">style name
-                                                                                </option>
-                                                                        </select>
+									<select id="style" name="styleid">
+										<option th:each="style : ${allStyles}" th:text="${style.styleName}"
+			    th:value="${style.id}">style name
+										</option>
+									</select>
 									<br><br>
 
 
 									<label for="skill">Select a skill:</label>
-									<select id="skill" name="skill">
+									<select id="skill" name="skillid">
 										<option th:each="skill : ${allSkills}" th:text="${skill.level}"
 			    th:value="${skill.id}">skill level
 										</option>
@@ -55,8 +55,37 @@
 									<input type="submit" value="Send">
 								</form>
 								<button type="button" onclick="window.location.href = '/';" class="btn btn-primary">Back to home</button>
+
+								<br><br>
+								<div class="band-finder-table">
+									<table class="table">
+										<thead class="thead-dark">
+											<tr>
+												<th scope="col">Band Name</th>
+												<th scope="col">City</th>
+												<th scope="col">Role</th>
+												<th scope="col">Style</th>
+												<th scope="col">Skill</th>
+												<th scope="col"></th>
+												<th scope="col"></th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="band : ${bands}">
+												<td th:text="${band.bandName}">Band Name</td>
+												<td th:text="${band.city}">City</td>
+												<td th:text="${band.role.roleName}">Role Name</td>
+												<td th:text="${band.style.styleName}">style Name</td>
+												<td th:text="${band.skill.level}">Level</td>
+												<td><a th:href="@{/band(id=${band.id})}">Edit</a></td>
+												<td><a th:href="@{/band/delete(id=${band.id})}">Remove</a></td>
+											</tr>
+										</tbody>
+									</table>
+
+									</div>
+								</div>
 							</div>
 						</div>
-					</div>
 	</body>
 </html>

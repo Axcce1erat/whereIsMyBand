@@ -53,8 +53,6 @@
                         <th scope="col">Role</th>
                         <th scope="col">Style</th>
                         <th scope="col">Skill</th>
-			<th scope="col"></th>
-			<th scope="col"></th>
                      </tr>
                   </thead>
                   <tbody>
@@ -64,8 +62,6 @@
                         <td th:text="${band.role.roleName}">Role Name</td>
                         <td th:text="${band.style.styleName}">style Name</td>
                         <td th:text="${band.skill.level}">Level</td>
-			<td><a th:href="@{/band(id=${band.id})}">Edit</a></td>
-                        <td><a th:href="@{/band/delete(id=${band.id})}">Remove</a></td>
                      </tr>
                   </tbody>
                </table>

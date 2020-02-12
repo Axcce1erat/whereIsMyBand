@@ -32,7 +32,7 @@ public class Style {
 		return id;
 	}
 
-	public void SetId(Long id){
+	public void setId(Long id){
 		this.id=id;
 	}
 
