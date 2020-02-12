@@ -6,19 +6,14 @@ import org.apache.tomcat.util.descriptor.web.SecurityConstraint;
 import org.apache.catalina.Context;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.server.ResponseStatusException;
-import org.springframework.http.HttpStatus;
-import java.sql.*;
 
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Controller
 @SpringBootApplication
@@ -27,9 +22,16 @@ public class OurProjectApplication {
 	public static void main(String[] args) throws Exception{
 		SpringApplication.run(OurProjectApplication.class, args);
 	}
+	
+	@Bean
+	public PasswordEncoder getPasswordEncoder() {
+		return new BCryptPasswordEncoder();
+		
+	}
+	
 
 	 @Bean
-        public ServletWebServerFactory servletContainer() {
+      public ServletWebServerFactory servletContainer() {
                 TomcatServletWebServerFactory tomcatContainer = new TomcatServletWebServerFactory() {
                         @Override
                         protected void postProcessContext(Context context) {
