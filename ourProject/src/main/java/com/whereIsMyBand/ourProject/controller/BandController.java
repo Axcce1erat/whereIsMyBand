@@ -55,7 +55,7 @@ public class BandController {
 		}
 		if(!(request.getParameter("selectedStyle")==null)){
 			if(!(request.getParameter("selectedStyle").equals(""))) {
-				style.SetId(Long.parseLong(request.getParameter("selectedStyle")));
+				style.setId(Long.parseLong(request.getParameter("selectedStyle")));
 			}
 		}
 		if(!(request.getParameter("selectedSkill")==null)){
