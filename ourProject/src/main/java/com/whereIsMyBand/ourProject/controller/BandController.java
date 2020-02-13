@@ -55,7 +55,7 @@ public class BandController {
 		}
 		if(!(request.getParameter("selectedStyle")==null)){
 			if(!(request.getParameter("selectedStyle").equals(""))) {
-				style.SetId(Long.parseLong(request.getParameter("selectedStyle")));
+				style.setId(Long.parseLong(request.getParameter("selectedStyle")));
 			}
 		}
 		if(!(request.getParameter("selectedSkill")==null)){
@@ -96,8 +96,8 @@ public class BandController {
 	public String searchBand(HttpServletRequest request, Model model, @ModelAttribute Role role, @ModelAttribute Style style, @ModelAttribute Skill skill) {
 
 		Band band = new Band();
-		band.setStyle(style);
 		band.setRole(role);
+		band.setStyle(style);
 		band.setSkill(skill);
 
 
@@ -125,10 +125,21 @@ public class BandController {
 	}
 
 	@GetMapping("/band")
-	public String getBand(Model model) {
+	public String getBand(Model model, 
+				@RequestParam(required = false) Long id) {
 
 		Band band = new Band();
 
+		 if (id != null) {
+            Optional<Band> optionalBand = bandRepository.findById(id);
+            if (optionalBand.isPresent()) {
+                band = optionalBand.get();
+
+            }
+                }
+
+		//model.addAttribute("bandrole", band.getRole().getId());	
+		model.addAttribute("bands", bandRepository.findAll());
 		model.addAttribute("band", band);
 		model.addAttribute("allRoles", roleRepository.findAll());
 		model.addAttribute("allStyles", styleRepository.findAll());
@@ -136,25 +147,26 @@ public class BandController {
 
 
 		return "band";
-	}
+	}	
 
 	@PostMapping("/band")
-	public String postBand(Model model, @ModelAttribute Band band, @ModelAttribute Role role, @ModelAttribute Style style, @ModelAttribute Skill skill) {
+        public String postBand(Model model, @ModelAttribute Band band, @RequestParam Long roleid, @RequestParam Long styleid, @RequestParam Long skillid) {
 
-		bandRepository.save(band);
-		roleRepository.save(role);
-		styleRepository.save(style);
-		skillRepository.save(skill);	
+                band.setStyle(styleRepository.findById(styleid).get());
+                band.setSkill(skillRepository.findById(skillid).get());
+                band.setRole(roleRepository.findById(roleid).get());
+                bandRepository.save(band);
 
-		return "redirect:/bands";
-	}
+                return "redirect:/band";
+        }
+
 
 	@GetMapping("/band/delete")
 	public String deleteBand(@RequestParam Long id) {
 
 		bandRepository.deleteById(id);
 
-		return "redirect:/bands";
+		return "redirect:/band";
 	}
 
 }
