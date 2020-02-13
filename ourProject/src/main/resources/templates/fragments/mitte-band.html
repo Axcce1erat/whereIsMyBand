@@ -29,9 +29,10 @@
 									<br><br>
 
 									<label for="role">Select a role:</label>
-									<select id="role" name="roleid" th:value="${bandrole}"> 
+									<select id="role" name="roleid"> 
 										<option th:each="role : ${allRoles}" th:text="${role.roleName}"
 			   th:value="${role.id}">role name
+			   
 										</option>
 									</select>
 									<br><br>

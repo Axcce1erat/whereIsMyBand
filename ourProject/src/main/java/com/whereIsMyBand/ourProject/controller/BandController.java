@@ -81,7 +81,6 @@ public class BandController {
 		}
 
 		model.addAttribute("bands", bandRepository.findAll(Example.of(band),PageRequest.of(page, size)));
-		System.out.println(skill.getId());
 		model.addAttribute("selectedSkill", skill.getId());
 		model.addAttribute("selectedStyle", style.getId());
 		model.addAttribute("selectedRole", role.getId());
@@ -137,11 +136,10 @@ public class BandController {
 
             }
                 }
-
-		//model.addAttribute("bandrole", band.getRole().getId());	
 		model.addAttribute("bands", bandRepository.findAll());
 		model.addAttribute("band", band);
 		model.addAttribute("allRoles", roleRepository.findAll());
+	//	System.out.println("bandrole: "+role.getId());
 		model.addAttribute("allStyles", styleRepository.findAll());
 		model.addAttribute("allSkills", skillRepository.findAll());
 
