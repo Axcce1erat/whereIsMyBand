@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Navbar-Fragment</title>
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+	</head>
+	<body>
+		<div th:fragment="user"> 
+
+			<div id="mainPicture">
+				<img class="galleryImgMain" src="pictures/Team/hiclipart.com(1).png" style="height:20em;width:100%; border-radius:5px" alt="Picture Of Music Notes">
+			</div>
+			<div id="TopTop">
+				<div class="mb-4">&nbsp;</div>
+				<div class="row d-flex justify-content-center">
+					<div class="col-md-12 mb-4">
+						<div class="card">
+							<h4 class="card-header bg-dark info-color white-text text-center py-4"><strong>User-Verwaltung</strong></h4>
+							<br>
+							<button type="button" onclick="window.location.href = '/';" class="btn btn-primary mt-3 mb-3">Back to home</button>
+
+								<br><br>
+								<div class="band-finder-table">
+									<table class="table">
+										<thead class="thead-dark">
+											<tr>
+												<th scope="col">Name</th>
+												<th scope="col">Role</th>
+												<th scope="col">Password</th>
+												<th scope="col"></th>
+												<th scope="col"></th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="user : ${users}">
+												<td th:text="${user.name}">Name</td>
+												<td th:text="${user.role}">Password</td>
+												<td th:text="${user.password}">Role</td>
+										<td><a th:href="@{/user(id=${user.id})}">Edit</a></td>
+												<td><a th:href="@{/user/delete(id=${user.id})}">Remove</a></td>
+											</tr>
+										</tbody>
+									</table>
+
+									</div>
+								</div>
+							</div>
+						</div>
+	</body>
+</html>
