@@ -20,24 +20,21 @@
 								<label for="role">Select a role:</label>
 								<select id="role" name="role">
 									<option value=" ">----Select----</option>
-									<option th:each="role : ${allRoles}" th:text="${role.roleName}"
-		 th:value="${role.id}">
+									<option th:each="role : ${allRoles}" th:text="${role.roleName}"th:value="${role.id}">
 									</option>
 								</select>
 								<br><br>
 								<label for="style">Select a style:</label>
 								<select id="style" name="style">
 									<option value=" ">----Select----</option>
-									<option th:each="style : ${allStyles}" th:text="${style.styleName}"
-		 th:value="${style.id}">
+									<option th:each="style : ${allStyles}" th:text="${style.styleName}"th:value="${style.id}">
 									</option>
 								</select>
 								<br><br>
 								<label for="skill">Select a skill:</label>
 								<select id="skill" name="skill">
 									<option value=" ">----Select----</option>
-									<option th:each="skill : ${allSkills}" th:text="${skill.level}"
-		 th:value="${skill.id}">skill level
+									<option th:each="skill : ${allSkills}" th:text="${skill.level}"th:value="${skill.id}">skill level
 									</option>
 								</select>
 								<br><br>
@@ -48,20 +45,23 @@
 								<table class="table">
 									<thead class="thead-dark">
 										<tr>
-											<th scope="col">Band Name</th>
-											<th scope="col">City</th>
-											<th scope="col">Role</th>
-											<th scope="col">Style</th>
-											<th scope="col">Skill</th>
+											<th label=>Band Name</th>
+											<th label="City">City</th>
+											<th label="Role">Role</th>
+											<th label="Style">Style</th>
+											<th label="Skill">Skill</th>
 										</tr>
 									</thead>
 									<tbody>
 										<tr th:each="band : ${bands}">
-											<td th:text="${band.bandName}">Band Name</td>
-											<td th:text="${band.city}">City</td>
-											<td th:text="${band.role.roleName}">Role Name</td>
-											<td th:text="${band.style.styleName}">style Name</td>
-											<td th:text="${band.skill.level}">Level</td>
+
+											
+
+											<td data-label="Band Name"th:text="${band.bandName}">Band Name</td>
+											<td data-label="City"th:text="${band.city}">City</td>
+											<td data-label="Role Name"th:text="${band.role.roleName}">Role Name</td>
+											<td data-label="Style"th:text="${band.style.styleName}">style Name</td>
+											<td data-label="Level"th:text="${band.skill.level}">Level</td>
 										</tr>
 									</tbody>
 								</table>
