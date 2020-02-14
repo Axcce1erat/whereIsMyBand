@@ -10,7 +10,7 @@
 		<div th:fragment="band"> 
 
 			<div id="mainPicture">
-				<img class="galleryImgMain" src="pictures/Team/hiclipart.com(1).png" style="height:20em;width:100%; border-radius:5px" alt="Picture Of Music Notes">
+				<img class="galleryImgMainCAB" src="pictures/Team/hiclipart.com(1).png" style="height:20em;width:100%; border-radius:5px" alt="Picture Of Music Notes">
 			</div>
 			<div id="TopTop">
 				<div class="mb-4">&nbsp;</div>
@@ -55,7 +55,7 @@
 									<br><br>
 									<input type="submit" value="Send">
 								</form>
-								<button type="button" onclick="window.location.href = '/';" class="btn btn-primary">Back to home</button>
+								<button type="button" onclick="window.location.href = '/';" class="btn btn-primary">Start Page</button>
 
 								<br><br>
 								<div class="band-finder-table">
@@ -73,11 +73,11 @@
 										</thead>
 										<tbody>
 											<tr th:each="band : ${bands}">
-												<td th:text="${band.bandName}">Band Name</td>
-												<td th:text="${band.city}">City</td>
-												<td th:text="${band.role.roleName}">Role Name</td>
-												<td th:text="${band.style.styleName}">style Name</td>
-												<td th:text="${band.skill.level}">Level</td>
+												<td data-label="Band Name" th:text="${band.bandName}">Band Name</td>
+												<td data-label="City" th:text="${band.city}">City</td>
+												<td data-label="Role Name" th:text="${band.role.roleName}">Role Name</td>
+												<td data-label="Style Name" th:text="${band.style.styleName}">style Name</td>
+												<td data-label="Level" th:text="${band.skill.level}">Level</td>
 												<td><a th:href="@{/band(id=${band.id})}">Edit</a></td>
 												<td><a th:href="@{/band/delete(id=${band.id})}">Remove</a></td>
 											</tr>
