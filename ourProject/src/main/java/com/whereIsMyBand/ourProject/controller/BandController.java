@@ -47,7 +47,6 @@ public class BandController {
 	@GetMapping("/bands")
 	public String getAll (HttpServletRequest request, Model model, @ModelAttribute Role role, @ModelAttribute Style style, @ModelAttribute Skill skill) {
 
-		System.out.println("GetMapping");
 		if(!(request.getParameter("selectedRole")==null)){
 			if(!(request.getParameter("selectedRole").equals(""))) {
 				role.setId(Long.parseLong(request.getParameter("selectedRole")));
@@ -124,10 +123,11 @@ public class BandController {
 	}
 
 	@GetMapping("/band")
-	public String getBand(Model model, 
+	public String getBand(Model model,
 				@RequestParam(required = false) Long id) {
 
 		Band band = new Band();
+
 
 		 if (id != null) {
             Optional<Band> optionalBand = bandRepository.findById(id);
@@ -136,10 +136,12 @@ public class BandController {
 
             }
                 }
+
+
 		model.addAttribute("bands", bandRepository.findAll());
+		model.addAttribute("bandrole: "+band.getRole().getId());
 		model.addAttribute("band", band);
 		model.addAttribute("allRoles", roleRepository.findAll());
-	//	System.out.println("bandrole: "+role.getId());
 		model.addAttribute("allStyles", styleRepository.findAll());
 		model.addAttribute("allSkills", skillRepository.findAll());
 
@@ -153,6 +155,7 @@ public class BandController {
                 band.setStyle(styleRepository.findById(styleid).get());
                 band.setSkill(skillRepository.findById(skillid).get());
                 band.setRole(roleRepository.findById(roleid).get());
+		model.addAttribute("bandrole: "+band.getRole().getId());
                 bandRepository.save(band);
 
                 return "redirect:/band";
