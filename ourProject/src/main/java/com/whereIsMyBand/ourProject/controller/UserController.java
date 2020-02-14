@@ -39,12 +39,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 	    	if (id != null) {
 	            Optional<User> optionalUser = userRepository.findById(id);
 	            if (optionalUser.isPresent()) {
-	               user = optionalUser.get();
-	            	//model.addAttribute("selecteduser", optionalUser.get());
+	               user = optionalUser.get();	            	
 	            }
 
 	    	}
-	    	model.addAttribute("selecteduser", user);
+	    	model.addAttribute("user", user);
+	    	
 	        
 	        return "anlegen";
 	    }
@@ -52,8 +52,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 	    //create or update a user
 	   	@PostMapping("/anlegen")
 	    public String postUser(@ModelAttribute User user) {
- 		
+ 			   		
 	   		userRepository.save(user);
+	   	
 	        return "redirect:/user";
 	    }
 	    
