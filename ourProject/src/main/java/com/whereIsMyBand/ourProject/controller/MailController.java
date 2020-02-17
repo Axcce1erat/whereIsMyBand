@@ -40,6 +40,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 	    return "mailoutput";
 	    }
 		
+		//delete mails
+	    @GetMapping("/mailoutput/delete")
+	    public String deleteMails(@RequestParam Long id ) {
+	      
+	    	mailRepository.deleteById(id);
+	        return "redirect:/mailoutput";
+	    }
+		
+		
 		@GetMapping ("/")
 		public String getMail(Model model) {
 			return "index";

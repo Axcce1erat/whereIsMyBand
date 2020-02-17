@@ -7,7 +7,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 	@Configuration
@@ -31,7 +30,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 			http     					
 			.authorizeRequests()
 		    	.antMatchers("/", "/bands", "/mails", "/pictures/**", "/css/**", "/fragments/**").permitAll()
-				.anyRequest().authenticated()
+		    	.antMatchers("/band").hasAnyRole("ADMIN", "USER")
+		    	.antMatchers("/user","/mailoutput","/admin").hasRole("ADMIN")
+		    	.anyRequest().authenticated()
 		    	.and()
 		    .formLogin()
 	            .and()

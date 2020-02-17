@@ -74,6 +74,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 	        return "redirect:/user";
 	    }
 				
+	    @GetMapping ("/admin")
+		public String getAdmin(Model model) {
+			return "admin";
+		}
+	    
+	    
 }
 	
 

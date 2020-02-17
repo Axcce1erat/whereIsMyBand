@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Navbar-Fragment</title>
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+	</head>
+	<body>
+		<div th:fragment="admin"> 
+
+			<div id="mainPicture">
+				<img class="galleryImgMain" src="pictures/Team/hiclipart.com(1).png" style="height:20em;width:100%; border-radius:5px" alt="Picture Of Music Notes">
+			</div>
+			<div id="TopTop">
+				<div class="row d-flex justify-content-center">
+					<div class="col-md-12 mb-4">
+						<div class="card">
+							<h4 class="card-header bg-dark info-color white-text text-center py-4"><strong>Admin-Bereich</strong></h4>
+							<br>
+							<div class="container">
+							<button type="button" onclick="window.location.href = '/user';" class="btn btn-primary mt-3 mb-3">User-Verwaltung</button>
+							<button type="button" onclick="window.location.href = '/anlegen';" class="btn btn-primary mt-3 mb-3">User anlegen</button>
+							<button type="button" onclick="window.location.href = '/mailoutput';" class="btn btn-primary mt-3 mb-3">Messages</button>
+							</div>
+							
+								<br><br>
+							</div>
+					</div>
+			</div>
+	</body>
+</html>
