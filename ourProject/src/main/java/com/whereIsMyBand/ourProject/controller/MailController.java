@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 	public class MailController {
 
 	    
-		// TODO : get mail repository by dependency injection
+		//get mail repository by dependency injection
 		@Autowired
 		private MailRepository mailRepository;
 	    
@@ -32,12 +32,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 	        return "mails";
 	    }
 		
-		//TODO : get all mails
+		//get all mails
 		@GetMapping("/mailoutput")
 	    public String postMailoutput(Model model,@ModelAttribute Mail mail) {
 			model.addAttribute("mailoutput", mailRepository.findAll());    
 					
 	    return "mailoutput";
+	    }
+		
+		
+		//delete mails
+	    @GetMapping("/mailoutput/delete")
+	    public String deleteMails(@RequestParam Long id ) {
+	      
+	    	mailRepository.deleteById(id);
+	        return "redirect:/mailoutput";
 	    }
 		
 		@GetMapping ("/")

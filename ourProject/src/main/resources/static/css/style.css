@@ -17,12 +17,24 @@ body{
   font-size: 20px;
 }
 
+.navbar-nav ul {
+    padding:10px;
+}
+
 
 .galleryImgMain{                       /* FORTMATIERUNG FÜR ABOUT US IMG */                              
   height:16em;
   width:100%;
   object-fit: cover;
   object-position:center;
+}
+
+
+.galleryImgMainCAB{                     /* FORTMATIERUNG FÜR ABOUT US IMG BEI Create */ 
+  object-fit: cover;
+  object-position:center;
+  margin-bottom: -60px;
+  
 }
 
 .headPicture{                          /* FORTMATIERUNG FÜR HEADER IMG */   
@@ -41,7 +53,7 @@ margin-bottom: -60px;
 
 
 .card button {                   /* FORMATIERUNG FÜR DEN GET STARTED BUTTON IN "FIND A BAND"*/
-    width: 45%;
+    width: 25%;
     height: 3.5em;
     background: #0db2db;
     font-weight: bold;
@@ -53,7 +65,7 @@ margin-bottom: -60px;
     text-shadow:0px 1px 0px #2f6627;
     border: none;
     display:inline-block;  
-    border-radius:1rem;
+    border-radius:0.8rem;
 }
 
 .card button:hover {                  /* HOVER EFFECT FÜR GET STARTED BUTTON IN "FIND A BAND" */ 
@@ -131,38 +143,76 @@ margin-bottom: -60px;
     
 }
 .contact-form form{                   /* FORMATIERUNG FÜR DEN PADDING AN "CONTACT US" FORM */
-    padding: 9%;
+    padding-bottom: 9%;
+    padding-top: 10%;
 }
 .contact-form form .row{              /* FORMATIERUNG FÜR DEN ROW IN DEN "CONTAC US" FORM */
     margin-bottom: -11%;
     margin-top: -9%;
 }
 
-.contact-form .btnContact {           /* FORMATIERUNG FÜR DEN BUTTON IN CONTACT FORM, HOVER EFFEKT ETC */
-    width: 28%;
-    height: 55px;
-    background: #0db2db;
+
+.table td,.table th{
+  padding:12px 15px;
+  border:1px solid #ddd;
+  text-align: center;
+  font-size:16px;
+}
+
+
+.table tbody tr:nth-child(even){
+  background-color: #e7e7e7;
+}
+
+
+
+@media(max-width: 600px){
+  .table thead{
+    display: none;
+  }
+
+  .table, .table tbody, .table tr, .table td{
+    display: block;
+    width: 100%;
+  }
+  .table tr{
+    margin-bottom:15px;
+  }
+  .table td{
+    text-align: right;
+    padding-left: 10%;
+    text-align: right;
+    position: relative;
+  }
+  .table td::before{
+    content: attr(data-label);
+    position: absolute;
+    left:0;
+    width: 50%;
+    padding-left:15px;
+    font-size:15px;
     font-weight: bold;
-    color: #ffffff;
-    cursor: pointer;
-    font-family:Arial;
-    font-size:18px;
-    text-decoration:none;
-    text-shadow:0px 1px 0px #2f6627;
-    border: none;
-    display:inline-block;  
-    border-radius:1rem;
+    text-align: left;
+  }
+}
+.dropdowncontainer{
+  display: flex;
+  flex-wrap:wrap;
+  justify-content: space-around;
 
 }
-
-.contact-form .btnContact:hover {
-  background-color:#99d678;
-}
-.contact-form .btnContact:active {
-  position:relative;
-  top:1px;
+.submitbutton{
+ display:flex;
+ justify-content: center;
 }
 
+@media(max-width: 350px){
+  .LogoImg{
+    width: 180px;
+  }
 
- 
 
+.dropdowncontainer2{
+  display: flex;
+  flex-wrap:wrap;
+  justify-content: space-around;

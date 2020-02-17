@@ -3,13 +3,14 @@
 	<head>
 		<title>Navbar-Fragment</title>
 		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+		<link rel="stylesheet" href="style.css"/>
 	</head>
 	<body>
 		<!--Bild unter Navigation-->
 		<div th:fragment="band"> 
 
 			<div id="mainPicture">
-				<img class="galleryImgMain" src="pictures/Team/hiclipart.com(1).png" style="height:20em;width:100%; border-radius:5px" alt="Picture Of Music Notes">
+				<img class="galleryImgMainCAB" src="pictures/Team/hiclipart.com(1).png" style="height:20em;width:100%; border-radius:5px" alt="Picture Of Music Notes">
 			</div>
 			<div id="TopTop">
 				<div class="mb-4">&nbsp;</div>
@@ -21,15 +22,15 @@
 							<div class="card-body">
 								<form method="post" th:action="@{/band}" th:object="${band}">
 									<input name="id" th:field="*{id}" type="hidden">
-									<label for="band-bandName">BandName:</label>
+									<label for="band-bandName"><b>BandName:</b></label>&nbsp;&nbsp;&nbsp;&nbsp;
 									<input id="band-bandName" name="bandName" placeholder="AC/DC" required th:field="*{bandName}" type="text">
 									<br><br>
-									<label for="band-city">City:</label>
+									<label for="band-city"><b>City:</b></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<input id="band-city" name="city" placeholder="Darmstadt" required th:field="*{city}" type="text">
 									<br><br>
 
-									<label for="role">Select a role:</label>
-									<select id="role" name="roleid"> 
+									<label for="role"><b>Select a role:</b></label>&nbsp;&nbsp;
+									<select id="role" name="roleid" th:value="${bandrole}"> 
 										<option th:each="role : ${allRoles}" th:text="${role.roleName}"
 			   th:value="${role.id}">
 			   
@@ -37,7 +38,7 @@
 									</select>
 									<br><br>
 
-									<label for="style">Select a style:</label>
+									<label for="style"><b>Select a style:</b> </label>&nbsp;
 									<select id="style" name="styleid">
 										<option th:each="style : ${allStyles}" th:text="${style.styleName}"
 			    th:value="${style.id}">style name
@@ -46,7 +47,7 @@
 									<br><br>
 
 
-									<label for="skill">Select a skill:</label>
+									<label for="skill"><b>Select a skill:</b></label>&nbsp;&nbsp;
 									<select id="skill" name="skillid">
 										<option th:each="skill : ${allSkills}" th:text="${skill.level}"
 			    th:value="${skill.id}">skill level
@@ -55,8 +56,6 @@
 									<br><br>
 									<input type="submit" value="Send">
 								</form>
-								<button type="button" onclick="window.location.href = '/';" class="btn btn-primary">Back to home</button>
-
 								<br><br>
 								<div class="band-finder-table">
 									<table class="table">
@@ -73,11 +72,11 @@
 										</thead>
 										<tbody>
 											<tr th:each="band : ${bands}">
-												<td th:text="${band.bandName}">Band Name</td>
-												<td th:text="${band.city}">City</td>
-												<td th:text="${band.role.roleName}">Role Name</td>
-												<td th:text="${band.style.styleName}">style Name</td>
-												<td th:text="${band.skill.level}">Level</td>
+												<td data-label="Band Name" th:text="${band.bandName}">Band Name</td>
+												<td data-label="City" th:text="${band.city}">City</td>
+												<td data-label="Role Name" th:text="${band.role.roleName}">Role Name</td>
+												<td data-label="Style Name" th:text="${band.style.styleName}">style Name</td>
+												<td data-label="Level" th:text="${band.skill.level}">Level</td>
 												<td><a th:href="@{/band(id=${band.id})}">Edit</a></td>
 												<td><a th:href="@{/band/delete(id=${band.id})}">Remove</a></td>
 											</tr>

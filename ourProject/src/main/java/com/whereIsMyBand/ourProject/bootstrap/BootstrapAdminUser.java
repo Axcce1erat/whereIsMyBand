@@ -22,13 +22,13 @@ public class BootstrapAdminUser implements CommandLineRunner {
 		this.userRepository = userRepository;
 		this.passwordEncoder = passwordEncoder;
 	}
-	
+
 	
 	@Override
 	public void run(String... args) throws Exception {
 	 Optional<User> optionalAdmin = userRepository.findByName("admin");
 	 if (optionalAdmin.isEmpty()) {
-		 System.out.println("No admin user, creating admin");
+		 System.out.println("****No admin user, system is creating one");
 		 User admin = new User();
 		 admin.setName("admin");
 		 admin.setRole("ADMIN");
