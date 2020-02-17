@@ -15,7 +15,7 @@
       <div class="col-md-12 mb-4">
       <div class="card">
   <h4 class="card-header bg-dark info-color white-text text-center py-4"><strong>Messages from users</strong></h4>
-	 <a href="/">Back to home!</a>
+
       <br>
          <div class="band-finder-table">
             <table class="table">
@@ -25,17 +25,14 @@
                      <th scope="col">Adresse</th>
 		     <th scope="col">Phone</th>
 		     <th scope="col">Message</th>
-
-		     <th></th>
-		     <th></th>
                   </tr>
                </thead>
                <tbody>
 		     <tr th:each="mail : ${mailoutput}">
-		     <td th:text="${mail.name}">Name</td>
-		     <td th:text="${mail.adress}">Adresse</td>
-		     <td th:text="${mail.phone}">Phone</td>
-		     <td th:text="${mail.message}">Message</td>
+		     <td data-label="Name" th:text="${mail.name}">Name</td>
+		     <td data-label="Adresse" th:text="${mail.adress}">Adresse</td>
+		     <td data-label="Phone" th:text="${mail.phone}">Phone</td>
+		     <td data-label="Message" th:text="${mail.message}">Message</td>
 	              </tr>
                </tbody>
             </table>

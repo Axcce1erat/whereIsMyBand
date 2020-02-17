@@ -6,6 +6,7 @@ import com.whereIsMyBand.ourProject.repository.user.UserRepository;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +21,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 		//get User repository by dependency injection
 		@Autowired
 		private UserRepository userRepository;
-    
+		
+		@Autowired 
+	    private BCryptPasswordEncoder passwordEncoder;
+     
 		
 		//get all users 
 		@GetMapping("/user")
@@ -48,17 +52,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 	        
 	        return "anlegen";
 	    }
-
+	    
+	
 	    //create or update a user
 	   	@PostMapping("/anlegen")
 	    public String postUser(@ModelAttribute User user) {
  			   		
+	   		final String encodedPassword = passwordEncoder.encode(user.getPassword());
+	        user.setPassword(encodedPassword);
 	   		userRepository.save(user);
 	   	
 	        return "redirect:/user";
 	    }
 	    
-	    //delete a user
+	  
+		//delete a user
 	    @GetMapping("/user/delete")
 	    public String deleteUser(@RequestParam Long id ) {
 	      
