@@ -204,7 +204,6 @@ margin-bottom: -60px;
 .submitbutton{
  display:flex;
  justify-content: center;
- color: green;
 }
 
 @media(max-width: 350px){
