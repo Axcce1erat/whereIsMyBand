@@ -227,3 +227,14 @@ margin-bottom: -60px;
     text-align: left;
   }
 }
+.dropdowncontainer{
+  display: flex;
+  flex-wrap:wrap;
+  justify-content: space-around;
+
+}
+.submitbutton{
+ display:flex;
+ justify-content: center;
+ color: green;
+}
