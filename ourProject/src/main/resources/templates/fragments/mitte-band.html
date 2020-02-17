@@ -22,14 +22,14 @@
 							<div class="card-body">
 								<form method="post" th:action="@{/band}" th:object="${band}">
 									<input name="id" th:field="*{id}" type="hidden">
-									<label for="band-bandName">BandName:</label>
+									<label for="band-bandName"><b>BandName:</b></label>&nbsp;&nbsp;&nbsp;&nbsp;
 									<input id="band-bandName" name="bandName" placeholder="AC/DC" required th:field="*{bandName}" type="text">
 									<br><br>
-									<label for="band-city">City:</label>
+									<label for="band-city"><b>City:</b></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<input id="band-city" name="city" placeholder="Darmstadt" required th:field="*{city}" type="text">
 									<br><br>
 
-									<label for="role">Select a role:</label>
+									<label for="role"><b>Select a role:</b></label>&nbsp;&nbsp;
 									<select id="role" name="roleid" th:value="${bandrole}"> 
 										<option th:each="role : ${allRoles}" th:text="${role.roleName}"
 			   th:value="${role.id}">role name
@@ -37,7 +37,7 @@
 									</select>
 									<br><br>
 
-									<label for="style">Select a style:</label>
+									<label for="style"><b>Select a style:</b> </label>&nbsp;
 									<select id="style" name="styleid">
 										<option th:each="style : ${allStyles}" th:text="${style.styleName}"
 			    th:value="${style.id}">style name
@@ -46,7 +46,7 @@
 									<br><br>
 
 
-									<label for="skill">Select a skill:</label>
+									<label for="skill"><b>Select a skill:</b></label>&nbsp;&nbsp;
 									<select id="skill" name="skillid">
 										<option th:each="skill : ${allSkills}" th:text="${skill.level}"
 			    th:value="${skill.id}">skill level
@@ -55,7 +55,6 @@
 									<br><br>
 									<input type="submit" value="Send">
 								</form>
-								<button type="button" onclick="window.location.href = '/';" class="btn btn-primary">Start Page</button>
 								<br><br>
 								<div class="band-finder-table">
 									<table class="table">
