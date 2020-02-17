@@ -22,7 +22,7 @@ public class BootstrapAdminUser implements CommandLineRunner {
 		this.userRepository = userRepository;
 		this.passwordEncoder = passwordEncoder;
 	}
-	
+
 	
 	@Override
 	public void run(String... args) throws Exception {
