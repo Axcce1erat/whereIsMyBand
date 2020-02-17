@@ -3,6 +3,7 @@
 	<head>
 		<title>Navbar-Fragment</title>
 		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+		<link rel="stylesheet" href="style.css"/>
 	</head>
 	<body>
 		<div th:fragment="suche"> 
@@ -17,28 +18,35 @@
 							<h4 class="card-header bg-dark info-color white-text text-center py-4"><strong>Good Luck !</strong></h4>
 							<br><br>
 							<form method="post" th:action="@{/bands}" th:object="${bands}">
-								<label for="role">Select a role:</label>
+								<div class="dropdowncontainer">
+									<div class"dropdown">
 								<select id="role" name="role">
-									<option value=" ">----Select----</option>
+									<option value=" ">Select a Role</option>
 									<option th:each="role : ${allRoles}" th:text="${role.roleName}"th:value="${role.id}">
 									</option>
 								</select>
-								<br><br>
-								<label for="style">Select a style:</label>
+									</div>
+								<br>
+								 <div class"dropdown">
 								<select id="style" name="style">
-									<option value=" ">----Select----</option>
+									<option value=" ">Select a Style</option>
 									<option th:each="style : ${allStyles}" th:text="${style.styleName}"th:value="${style.id}">
 									</option>
 								</select>
-								<br><br>
-								<label for="skill">Select a skill:</label>
-								<select id="skill" name="skill">
-									<option value=" ">----Select----</option>
+								 </div>
+								<br>
+								 <div class"dropdown">
+									<select id="skill" name="skill">
+									<option value=" ">Select a Skill</option>
 									<option th:each="skill : ${allSkills}" th:text="${skill.level}"th:value="${skill.id}">skill level
 									</option>
 								</select>
-								<br><br>
-								<input type="submit" value="Send">
+								 </div>
+								</div>
+								<br>
+								<div class="submitbutton">
+								<input type="submit" value="Show the bands">
+								</div>
 							</form>
 							
 							<br>
