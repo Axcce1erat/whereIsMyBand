@@ -22,17 +22,17 @@
 						<form method="post"  th:action="@{/anlegen}" th:object="${user}">
 						<input name="id" th:field="*{id}" type="hidden">
 						<label for="user-name">Name:</label>
-								<input id="user-name" name="name" placeholder="Admin" required th:field="*{name}" pattern="^(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{5,}$" type="text">
+								<input id="user-name" name="name" placeholder="Falco" required th:field="*{name}" pattern="^(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{4,}$" type="text">
 								<br><br>
 								<label for="user-role">Role:</label>
-								<input id="user-role" name="role" placeholder="ADMIN" required th:field="*{role}" type="text">
+								<input id="user-role" name="role" placeholder="USER" required th:field="*{role}" type="text">
 								<br><br>
 								<label for="user-password">Password:</label>
-								<input id="user-password" name="password" placeholder="ZUT" required th:field="*{password}" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{8,}$" type="text"> 						
+								<input id="user-password" name="password" placeholder="We27rZ45c" required th:field="*{password}" type="text"> 						
 							<input type="submit" value="Send">																		
 								</form>
 								</div>
-								<button type="button" onclick="window.location.href = '/';" class="btn btn-primary mt-3 mb-3">Back to home</button>
+								<button type="button" onclick="window.location.href = '/';" class="btn btn-primary">Back to home</button>
 								</div>
 							</div>
 						</div>
