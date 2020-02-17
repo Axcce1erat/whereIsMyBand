@@ -19,29 +19,28 @@
 							<br><br>
 							<form method="post" th:action="@{/bands}" th:object="${bands}">
 								<div class="dropdowncontainer">
-									<div class"dropdown">
+								
 								<select id="role" name="role">
 									<option value=" ">Select a Role</option>
 									<option th:each="role : ${allRoles}" th:text="${role.roleName}"th:value="${role.id}">
 									</option>
 								</select>
-									</div>
+								
 								<br>
-								 <div class"dropdown">
+					
 								<select id="style" name="style">
 									<option value=" ">Select a Style</option>
 									<option th:each="style : ${allStyles}" th:text="${style.styleName}"th:value="${style.id}">
 									</option>
 								</select>
-								 </div>
+								
 								<br>
-								 <div class"dropdown">
+								
 									<select id="skill" name="skill">
 									<option value=" ">Select a Skill</option>
 									<option th:each="skill : ${allSkills}" th:text="${skill.level}"th:value="${skill.id}">skill level
 									</option>
 								</select>
-								 </div>
 								</div>
 								<br>
 								<div class="submitbutton">
