@@ -27,8 +27,8 @@
 												<th scope="col">Name</th>
 												<th scope="col">Role</th>
 												<th scope="col">Password</th>
-												<th scope="col"></th>
-												<th scope="col"></th>
+												<th scope="col">Edit</th>
+												<th scope="col">Delete</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -37,7 +37,7 @@
 												<td th:text="${user.role}">Password</td>
 												<td th:text="${user.password}">Role</td>
 										<td><a th:href="@{/anlegen(id=${user.id})}">Edit</a></td>
-												<td><a th:href="@{/user/delete(id=${user.id})}">Remove</a></td>
+												<td><a th:href="@{/user/delete(id=${user.id})}">Delete</a></td>
 											</tr>
 										</tbody>
 									</table>

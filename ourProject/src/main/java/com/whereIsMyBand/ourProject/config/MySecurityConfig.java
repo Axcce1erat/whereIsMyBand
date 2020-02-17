@@ -31,8 +31,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 			http     					
 			.authorizeRequests()
 		    	.antMatchers("/", "/bands", "/mails", "/pictures/**", "/css/**", "/fragments/**").permitAll()
-				.anyRequest().authenticated()
-		    	.and()
+		    	.antMatchers("/band").hasAnyRole("ADMIN", "USER")
+		        .anyRequest().hasRole("ADMIN")
+		        .and()
 		    .formLogin()
 	            .and()
 	        .httpBasic();
