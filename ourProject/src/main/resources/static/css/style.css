@@ -17,6 +17,10 @@ body{
   font-size: 20px;
 }
 
+.navbar-nav ul {
+    padding:10px;
+}
+
 
 .galleryImgMain{                       /* FORTMATIERUNG FÜR ABOUT US IMG */                              
   height:16em;
@@ -191,3 +195,9 @@ margin-bottom: -60px;
     text-align: left;
   }
 }
+
+
+@media(max-width: 350px){
+  .LogoImg{
+    width: 180px;
+  }
