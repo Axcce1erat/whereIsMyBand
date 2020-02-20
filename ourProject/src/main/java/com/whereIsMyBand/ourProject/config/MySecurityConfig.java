@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 	@Configuration
@@ -16,6 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 		private final UserDetailsService userDetailsService;
 
 		private final PasswordEncoder passwordEncoder;
+				
 		
 		@Autowired
 		public MySecurityConfig (UserDetailsService userDetailsService, PasswordEncoder passwordEncoder) {
@@ -30,8 +32,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 			http     					
 			.authorizeRequests()
 		    	.antMatchers("/", "/bands", "/mails", "/pictures/**", "/css/**", "/fragments/**").permitAll()
-		    	.antMatchers("/band").hasAnyRole("ADMIN", "USER")
-		    	.antMatchers("/user","/mailoutput","/admin").hasRole("ADMIN")
+		    //	.antMatchers("/band").hasAnyRole("ADMIN", "USER")
+		    //	.antMatchers("/user","/mailoutput","/admin").hasRole("ADMIN")
 		    	.anyRequest().authenticated()
 		    	.and()
 		    .formLogin()
@@ -44,4 +46,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);
 	}
+	
+
+	
+	public static void main (String [] args) {
+	System.out.println(new BCryptPasswordEncoder().encode("music"));
+		
+	}
+	
 }
+	
+	

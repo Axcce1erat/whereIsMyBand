@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org/" xmlns:sec="http://www.thymeleaf.org/extras/spring-security5">
+
 <head>
    <title>Navbar-Fragment</title>
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
@@ -20,10 +21,14 @@
             <li class="nav-item"><a class="nav-link" href="https://localhost:8443/#">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="https://localhost:8443/#ContactUsForm"> Contact Us</a></li>
             <li class="nav-item"><a class="nav-link" href="https://localhost:8443/#AboutUs">About Us</a></li>
- 		       	<li class="nav-item"><a class="nav-link" href="https://localhost:8443/mailoutput">Messages</a></li>
-		      	<li class="nav-item"><a class="nav-link" href="https://localhost:8443/band">Band-Admin</a></li>
-		      	<li class="nav-item"><a class="nav-link" href="https://localhost:8443/user">User</a></li>
+ 		      
            </ul>
+<ul class="nav navbar-nav navbar-right">
+        <li class="nav-item">
+          <a class="nav-link" href="#" th:href="@{/login}" sec:authorize="!isAuthenticated()">Login</a>
+          <a class="nav-link" href="#" th:href="@{/logout}" sec:authorize="isAuthenticated()"><span sec:authentication="name"></span> (logout)</a>
+        </li>
+      </ul>
  </div>
  </nav>
 </body>
