@@ -64,9 +64,9 @@ public class BandController {
 		}
 
 		Band band = new Band();
-                band.setStyle(style);
-                band.setRole(role);
-                band.setSkill(skill);
+		band.setStyle(style);
+		band.setRole(role);
+		band.setSkill(skill);
 
 		int page = 0;
 		int size = 10;
@@ -100,16 +100,16 @@ public class BandController {
 
 
 		int page = 0;
-                int size = 10;
+		int size = 10;
 
-                if (request.getParameter("page") != null && !request.getParameter("page").isEmpty()) {
-                        page = Integer.parseInt(request.getParameter("page")) - 1;
-                }
+		if (request.getParameter("page") != null && !request.getParameter("page").isEmpty()) {
+			page = Integer.parseInt(request.getParameter("page")) - 1;
+		}
 
-                if (request.getParameter("size") != null && !request.getParameter("size").isEmpty()) {
-                        size = Integer.parseInt(request.getParameter("size"));
-                }
-		
+		if (request.getParameter("size") != null && !request.getParameter("size").isEmpty()) {
+			size = Integer.parseInt(request.getParameter("size"));
+		}
+
 		model.addAttribute("bands", bandRepository.findAll(Example.of(band),PageRequest.of(page, size)));
 		model.addAttribute("selectedSkill", skill.getId());
 		model.addAttribute("selectedStyle", style.getId());
@@ -123,43 +123,50 @@ public class BandController {
 	}
 
 	@GetMapping("/band")
-	public String getBand(Model model,
-				@RequestParam(required = false) Long id) {
-
+	public String getBand(HttpServletRequest request,Model model, @RequestParam(required = false) Long id) {
 		Band band = new Band();
 
+		if (id != null) {
+			Optional<Band> optionalBand = bandRepository.findById(id);
+			if (optionalBand.isPresent()) {
+				band = optionalBand.get();
 
-		 if (id != null) {
-            Optional<Band> optionalBand = bandRepository.findById(id);
-            if (optionalBand.isPresent()) {
-                band = optionalBand.get();
+			}
+		}
+		if (band.getRole()!=null){
+			model.addAttribute("bandrole",band.getRole().getId());
+		}
 
-            }
+		if (band.getStyle()!=null){
+                        model.addAttribute("bandstyle",band.getStyle().getId());
+                }
+		
+		if (band.getSkill()!=null){
+                        model.addAttribute("bandskill", band.getSkill().getId());
                 }
 
 
 		model.addAttribute("bands", bandRepository.findAll());
-		model.addAttribute("bandrole: "+band.getRole().getId());
 		model.addAttribute("band", band);
 		model.addAttribute("allRoles", roleRepository.findAll());
 		model.addAttribute("allStyles", styleRepository.findAll());
 		model.addAttribute("allSkills", skillRepository.findAll());
 
 
+
 		return "band";
 	}	
 
 	@PostMapping("/band")
-        public String postBand(Model model, @ModelAttribute Band band, @RequestParam Long roleid, @RequestParam Long styleid, @RequestParam Long skillid) {
+	public String postBand(Model model, @ModelAttribute Band band, @RequestParam Long roleid, @RequestParam Long styleid, @RequestParam Long skillid) {
 
-                band.setStyle(styleRepository.findById(styleid).get());
-                band.setSkill(skillRepository.findById(skillid).get());
-                band.setRole(roleRepository.findById(roleid).get());
-		model.addAttribute("bandrole: "+band.getRole().getId());
-                bandRepository.save(band);
+		band.setStyle(styleRepository.findById(styleid).get());
+		band.setSkill(skillRepository.findById(skillid).get());
+		band.setRole(roleRepository.findById(roleid).get());
+		bandRepository.save(band);
 
-                return "redirect:/band";
-        }
+		return "redirect:/band";
+	}
 
 
 	@GetMapping("/band/delete")
