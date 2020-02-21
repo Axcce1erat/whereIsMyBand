@@ -32,8 +32,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 			http     					
 			.authorizeRequests()
 		    	.antMatchers("/", "/bands", "/mails", "/pictures/**", "/css/**", "/fragments/**").permitAll()
-		    //	.antMatchers("/band").hasAnyRole("ADMIN", "USER")
-		    //	.antMatchers("/user","/mailoutput","/admin").hasRole("ADMIN")
+		    	.antMatchers("/bands").hasAnyRole("ADMIN", "USER")
+		    	.antMatchers("/user","/mailoutput","/admin","/band").hasRole("ADMIN")
 		    	.anyRequest().authenticated()
 		    	.and()
 		    .formLogin()
@@ -44,16 +44,16 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 		
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+
 		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);
 	}
 	
-
 	
-	public static void main (String [] args) {
-	System.out.println(new BCryptPasswordEncoder().encode("music"));
-		
-	}
-	
+//	public static void main (String [] args) {
+//	System.out.println(new BCryptPasswordEncoder().encode("music"));
+//		
+//	}
+//	
 }
 	
 	

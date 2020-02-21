@@ -10,7 +10,5 @@ import com.whereIsMyBand.ourProject.entity.user.User;
 public interface UserRepository extends JpaRepository<User, Long>{
 
 	Optional<User> findByName(String name);
-
-	void deleteByName(String name);
 		
 }

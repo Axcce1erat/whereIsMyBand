@@ -19,10 +19,11 @@
         
            <ul class="navbar-nav ml-auto navbar-dark bg-dark" data-toggle="collapse" data-target=".navbar-collapse">
             <li class="nav-item"><a class="nav-link" href="https://localhost:8443/#">Home</a></li>
+ 			<li class="nav-item"><a class="nav-link" href="https://localhost:8443/bands">Suche</a></li>
             <li class="nav-item"><a class="nav-link" href="https://localhost:8443/#ContactUsForm"> Contact Us</a></li>
             <li class="nav-item"><a class="nav-link" href="https://localhost:8443/#AboutUs">About Us</a></li>
- 		      
-           </ul>
+		 	<li class="nav-item"><a class="nav-link" href="https://localhost:8443/admin">Admin</a></li>
+ 		    </ul>
 <ul class="nav navbar-nav navbar-right">
         <li class="nav-item">
           <a class="nav-link" href="#" th:href="@{/login}" sec:authorize="!isAuthenticated()">Login</a>
