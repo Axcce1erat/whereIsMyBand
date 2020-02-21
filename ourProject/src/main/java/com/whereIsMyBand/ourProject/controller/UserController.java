@@ -79,11 +79,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 	    	return "admin";
 			    }	    	    
 	    
+	    //Fehlerseite
 	    @GetMapping ("/login")
-		public String getAdmin(Model model, @ModelAttribute User user) {
+		public String getError(Model model) {
 	    	return "error";
 			    }	
-	    	    
 }
 	
 
