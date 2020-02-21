@@ -30,9 +30,10 @@
 									<br><br>
 
 									<label for="role"><b>Select a role:</b></label>&nbsp;&nbsp;
-									<select id="role" name="roleid" th:value="${bandrole}"> 
+									<select id="role" name="roleid"> 
 										<option th:each="role : ${allRoles}" th:text="${role.roleName}"
-			   th:value="${role.id}">role name
+			   th:value="${role.id}" th:selected="${role.id} == ${bandrole} ? true : false">
+			   
 										</option>
 									</select>
 									<br><br>
@@ -40,7 +41,7 @@
 									<label for="style"><b>Select a style:</b> </label>&nbsp;
 									<select id="style" name="styleid">
 										<option th:each="style : ${allStyles}" th:text="${style.styleName}"
-			    th:value="${style.id}">style name
+			    th:value="${style.id}" th:selected="${style.id} == ${bandstyle} ? true : false">
 										</option>
 									</select>
 									<br><br>
@@ -49,7 +50,7 @@
 									<label for="skill"><b>Select a skill:</b></label>&nbsp;&nbsp;
 									<select id="skill" name="skillid">
 										<option th:each="skill : ${allSkills}" th:text="${skill.level}"
-			    th:value="${skill.id}">skill level
+			    th:value="${skill.id}" th:selected="${skill.id} == ${bandskill} ? true : false">
 										</option>
 									</select>
 									<br><br>
