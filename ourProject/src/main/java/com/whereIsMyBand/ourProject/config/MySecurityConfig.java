@@ -33,7 +33,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 			.authorizeRequests()
 		    	.antMatchers("/", "/bands", "/mails", "/pictures/**", "/css/**", "/fragments/**").permitAll()
 		    	.antMatchers("/bands").hasAnyRole("ADMIN", "USER")
-		    	.antMatchers("/user","/mailoutput","/admin","/band").hasRole("ADMIN")
+		    	.antMatchers("/user","/mailoutput","/admin","/band","/anlegen").hasRole("ADMIN")
 		    	.anyRequest().authenticated()
 		    	.and()
 		    	.formLogin()
