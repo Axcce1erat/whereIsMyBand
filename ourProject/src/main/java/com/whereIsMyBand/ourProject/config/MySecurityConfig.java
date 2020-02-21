@@ -13,47 +13,45 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 	@Configuration
 	@EnableWebSecurity
 	public class MySecurityConfig extends WebSecurityConfigurerAdapter {
-	    
+
 		private final UserDetailsService userDetailsService;
 
 		private final PasswordEncoder passwordEncoder;
-				
-		
+
+
 		@Autowired
 		public MySecurityConfig (UserDetailsService userDetailsService, PasswordEncoder passwordEncoder) {
 			super();
 			this.userDetailsService = userDetailsService;
 			this.passwordEncoder = passwordEncoder;
 		}
-		
+
 
 		@Override
 	    protected void configure(HttpSecurity http) throws Exception {
-			http     					
+			http
 			.authorizeRequests()
 		    	.antMatchers("/", "/bands", "/mails", "/pictures/**", "/css/**", "/fragments/**").permitAll()
 		    	.antMatchers("/bands").hasAnyRole("ADMIN", "USER")
 		    	.antMatchers("/user","/mailoutput","/admin","/band").hasRole("ADMIN")
 		    	.anyRequest().authenticated()
 		    	.and()
-		    .formLogin()
+		    	.formLogin()
 	            .and()
 	        .httpBasic();
-			}   	
-	  
-		
+			}
+
+
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
 		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);
 	}
-	
-	
+
+
 //	public static void main (String [] args) {
 //	System.out.println(new BCryptPasswordEncoder().encode("music"));
-//		
+//
 //	}
-//	
+//
 }
-	
-	
