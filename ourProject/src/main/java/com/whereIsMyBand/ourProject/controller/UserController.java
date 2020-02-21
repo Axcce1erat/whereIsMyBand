@@ -76,11 +76,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 				
 	    @GetMapping ("/admin")
 		public String getAdmin(Model model, @ModelAttribute User user) {
-			   	
 	    	return "admin";
-		}
+			    }	    	    
 	    
-	    
+	    @GetMapping ("/login")
+		public String getAdmin(Model model, @ModelAttribute User user) {
+	    	return "error";
+			    }	
+	    	    
 }
 	
 

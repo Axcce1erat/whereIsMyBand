@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+   <title>Navbar-Fragment</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+</head>
+<body>
+     <!--Bild unter Navigation-->
+     <div th:fragment="error"> 
+     <div id="mainPicture">
+      <img class="headPicture" src="pictures/Team/hiclipart.com(1).png" style="height:20em;width:99.99%; border-radius:5px" alt="Picture Of Music Notes">
+   </div>
+   <div id="TopTop">
+   <div class="mb-4"></div>
+   <div class="row d-flex justify-content-center">
+   <div class="col-md-12 mb-4">
+   <div class="card">
+      <h4 class="card-header bg-dark info-color white-text text-center py-4"><strong>ERROR</strong></h4>
+      <br>
+      <div class="card-body text-center">
+         <p class="card-text">Access denied for users</p>
+         <button type="button" onclick="window.location.href = '/';" class="btn btn-primary">Back Home</button>
+      </div>
+   </div>
+  </div>
+</body>
+</html>
