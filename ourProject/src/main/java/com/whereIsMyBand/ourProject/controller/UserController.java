@@ -1,4 +1,4 @@
-package com.whereIsMyBand.ourProject.controller;
+	package com.whereIsMyBand.ourProject.controller;
 
 import com.whereIsMyBand.ourProject.entity.user.User;
 import com.whereIsMyBand.ourProject.repository.user.UserRepository;
@@ -74,6 +74,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 	        return "redirect:/user";
 	    }
 				
+	    @GetMapping ("/admin")
+		public String getAdmin(Model model, @ModelAttribute User user) {
+			   	
+	    	return "admin";
+		}
+	    
+	    
 }
 	
 

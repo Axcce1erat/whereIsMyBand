@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import com.whereIsMyBand.ourProject.entity.user.User;
 import com.whereIsMyBand.ourProject.repository.user.UserRepository;
 
-@Component
+//@Component
 public class BootstrapAdminUser implements CommandLineRunner {
 
 	private final UserRepository userRepository;

@@ -25,8 +25,8 @@
                      <th scope="col">Adresse</th>
 		     <th scope="col">Phone</th>
 		     <th scope="col">Message</th>
-			<th scope="col">Delete</th>	
-                  </tr>
+			<th scope="col">Delete</th>
+            </tr>
                </thead>
                <tbody>
 		     <tr th:each="mail : ${mailoutput}">
@@ -34,7 +34,7 @@
 		    <td data-label="Adresse" th:text="${mail.adress}">Adresse</td>
 		    <td data-label="Phone" th:text="${mail.phone}">Phone</td>
 		    <td data-label="Message" th:text="${mail.message}">Message</td>
-			<td><a th:href="@{/mailoutput/delete(id=${mail.id})}">Delete</a></td>	
+			<td><a th:href="@{/mailoutput/delete(id=${mail.id})}">Delete</a></td>
 			 </tr>
                </tbody>
             </table>

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Controller
@@ -24,9 +25,8 @@ public class OurProjectApplication {
 	}
 	
 	@Bean
-	public PasswordEncoder getPasswordEncoder() {
+	public BCryptPasswordEncoder getPasswordEncoder() {
 		return new BCryptPasswordEncoder();
-		
 	}
 	
 
