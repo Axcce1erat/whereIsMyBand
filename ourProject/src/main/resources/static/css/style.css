@@ -53,7 +53,7 @@ margin-bottom: -60px;
 
 
 .card button {                   /* FORMATIERUNG FÜR DEN GET STARTED BUTTON IN "FIND A BAND"*/
-    width: 25%;
+    width: 170px !important;
     height: 3.5em;
     background: #0db2db;
     font-weight: bold;
@@ -75,6 +75,9 @@ margin-bottom: -60px;
   position:relative;
   top:1px;
 }
+
+
+
 
 
   
@@ -180,7 +183,7 @@ margin-bottom: -60px;
   }
   .table td{
     text-align: right;
-    padding-left: 10%;
+    padding-left: 30%;
     text-align: right;
     position: relative;
   }
@@ -216,3 +219,5 @@ margin-bottom: -60px;
   display: flex;
   flex-wrap:wrap;
   justify-content: space-around;
+
+}
