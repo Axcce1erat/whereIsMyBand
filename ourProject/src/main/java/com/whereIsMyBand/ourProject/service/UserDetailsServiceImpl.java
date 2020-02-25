@@ -31,8 +31,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername (String name) throws UsernameNotFoundException {
 		
-		System.out.println("*****" + adminPassword);
-		
 		if ("admin".equals(name)){
 			
 			return new AdminUserDetails("admin", adminPassword);
