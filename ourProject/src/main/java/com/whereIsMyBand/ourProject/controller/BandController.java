@@ -71,7 +71,6 @@ public class BandController {
 		int page = 0;
 		int size = 10;
 
-		System.out.println("selectedSkill "+request.getParameter("selectedSkill"));
 		if (request.getParameter("page") != null && !request.getParameter("page").isEmpty()) {
 			page = Integer.parseInt(request.getParameter("page")) - 1;
 		}

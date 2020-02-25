@@ -72,7 +72,6 @@ public class User implements UserDetails {
 
 	@Override
 	public String getUsername() {
-		// TODO Auto-generated method stub
 		return name;
 	}
 
@@ -80,7 +79,6 @@ public class User implements UserDetails {
 
 	@Override
 	public boolean isAccountNonExpired() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
@@ -88,7 +86,6 @@ public class User implements UserDetails {
 
 	@Override
 	public boolean isAccountNonLocked() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
@@ -96,7 +93,6 @@ public class User implements UserDetails {
 
 	@Override
 	public boolean isCredentialsNonExpired() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
@@ -104,7 +100,6 @@ public class User implements UserDetails {
 
 	@Override
 	public boolean isEnabled() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
