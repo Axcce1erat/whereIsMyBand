@@ -36,6 +36,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 		    	.antMatchers("/user","/mailoutput","/admin","/band","/anlegen").hasRole("ADMIN")
 		    	.anyRequest().authenticated()
 		    	.and()
+			.logout()
+			.logoutSuccessUrl("https://localhost:8443")
+			.and()
 		    	.formLogin()
 	            .and()
 	        .httpBasic();
