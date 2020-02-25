@@ -29,28 +29,24 @@
 									<input id="band-city" name="city" placeholder="Darmstadt" required th:field="*{city}" type="text">
 									<br><br>
 
-									<label for="role"><b>Select a role:</b></label>&nbsp;&nbsp;
+									<label for="role"><b>Select a role:</b></label>&nbsp;
 									<select id="role" name="roleid"> 
-										<option th:each="role : ${allRoles}" th:text="${role.roleName}"
-			   th:value="${role.id}" th:selected="${role.id} == ${bandrole} ? true : false">
-			   
+										<option th:each="role : ${allRoles}" th:text="${role.roleName}"th:value="${role.id}" th:selected="${role.id} == ${bandrole} ? true : false">
 										</option>
 									</select>
 									<br><br>
 
-									<label for="style"><b>Select a style:</b> </label>&nbsp;
+									<label for="style"><b>Select a style:</b> </label>
 									<select id="style" name="styleid">
-										<option th:each="style : ${allStyles}" th:text="${style.styleName}"
-			    th:value="${style.id}" th:selected="${style.id} == ${bandstyle} ? true : false">
+										<option th:each="style : ${allStyles}" th:text="${style.styleName}"th:value="${style.id}" th:selected="${style.id} == ${bandstyle} ? true : false">
 										</option>
 									</select>
 									<br><br>
 
 
-									<label for="skill"><b>Select a skill:</b></label>&nbsp;&nbsp;
+									<label for="skill"><b>Select a skill:</b></label>&nbsp;
 									<select id="skill" name="skillid">
-										<option th:each="skill : ${allSkills}" th:text="${skill.level}"
-			    th:value="${skill.id}" th:selected="${skill.id} == ${bandskill} ? true : false">
+										<option th:each="skill : ${allSkills}" th:text="${skill.level}"th:value="${skill.id}" th:selected="${skill.id} == ${bandskill} ? true : false">
 										</option>
 									</select>
 									<br><br>

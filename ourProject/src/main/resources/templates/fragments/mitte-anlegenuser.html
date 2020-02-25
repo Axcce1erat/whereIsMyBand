@@ -11,33 +11,32 @@
 				<img class="galleryImgMain" src="pictures/Team/hiclipart.com(1).png" style="height:20em;width:100%; border-radius:5px" alt="Picture Of Music Notes">
 			</div>
 			<div id="TopTop">
-				<div class="mb-4">&nbsp;</div>
 				<div class="row d-flex justify-content-center">
 					<div class="col-md-12 mb-4">
 						<div class="card">
-							<h4 class="card-header bg-dark info-color white-text text-center py-4"><strong>User-Verwaltung</strong></h4>
+							<h4 class="card-header bg-dark info-color white-text text-center py-4"><strong>Create User</strong></h4>
 							<br>
-							
-							<div class="card-body">
-						
-													
-						<form method="post"  th:action="@{/anlegen}" th:object="${user}">
-						<input name="id" th:field="*{id}" type="hidden">
-						<label for="user-name">Name:</label>
-								<input id="user-name" name="name" placeholder="Falco" required th:field="*{name}" pattern="[A-zÄÖÜäöüß]{4,}" type="text">
-								<br><br>
-								<label for="user-role">Role:</label>
-								<input id="user-role" name="role" placeholder="USER" required th:field="*{role}" type="text">
-								<br><br>
-								<label for="user-password">Password:</label>
-								<input id="user-password" name="password" placeholder="We27rZ45c" required th:field="*{password}" type="text"> 						
-							<input type="submit" value="Send">																		
-								</form>
-								</div>
-							
-								<button type="button" onclick="window.location.href = '/';" class="btn btn-primary">Back to home</button>
-								</div>
-							</div>
 						</div>
+							
+						
+						<div class="card-body">						
+						    <form method="post"  th:action="@{/anlegen}" th:object="${user}">
+						        <input name="id" th:field="*{id}" type="hidden">
+								<label for="user-name">Name:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+								<input id="user-name" name="name" placeholder="Falco" required th:field="*{name}" pattern="[A-zÄÖÜäöüß]{4,}" type="text"><br><br>
+								<label for="user-role">Role:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+								<input id="user-role" name="role" placeholder="USER" required th:field="*{role}" type="text"><br><br>
+								<label for="user-password">Password:</label>
+
+								<input id="user-password" name="password" placeholder="We27rZ45c" required th:field="*{password}" type="text"><br><br> 	
+								 <div><input type="submit" value="Send"></div>																		
+						    </form>
+						</div>
+					</div>
+				</div>
+			</div>
+	
 	</body>
 </html>
