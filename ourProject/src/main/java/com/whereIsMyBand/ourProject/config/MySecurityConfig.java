@@ -31,7 +31,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 	    protected void configure(HttpSecurity http) throws Exception {
 			http
 			.authorizeRequests()
-		    	.antMatchers("/", "/bands", "/mails", "/pictures/**", "/css/**", "/fragments/**").permitAll()
+		    	.antMatchers("/", "/mails", "/pictures/**", "/css/**", "/fragments/**").permitAll()
 		    	.antMatchers("/bands").hasAnyRole("ADMIN", "USER")
 		    	.antMatchers("/user","/mailoutput","/admin","/band","/anlegen").hasRole("ADMIN")
 		    	.anyRequest().authenticated()
